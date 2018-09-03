@@ -1,0 +1,15 @@
+<h2>Pick your username</h2>
+
+<form action="/auth/username/{{user}}" method="POST" id="form-container">
+    <label for="username">User name</label>
+    <input id="username" type="text" name="username" placeholder="your user name">
+
+    <br><br>
+    <br> {{#if message }}
+    <div class="error-message">{{ message }}</div>
+    {{/if}}
+
+    <br><br>
+
+    <button>Set username</button>
+</form>

@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const Schema = mongoose.Schema;
+const Story = require('./Story');
 
 const userSchema = new Schema({
-  username: String,
-  password: String
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
+    username: { type: String, default: 'unknown' },
+    email: String,
+    password: String,
+    stories: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
 });
 
 const User = mongoose.model('User', userSchema);
