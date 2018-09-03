@@ -88,7 +88,7 @@ authRoutes.get(
             let id = req.user._id;
             res.redirect(`/auth/username/${id}`);
         } else {
-            res.redirect('/');
+            res.redirect('/protected/map');
         }
     }
 );
