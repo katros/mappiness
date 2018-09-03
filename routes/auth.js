@@ -84,8 +84,12 @@ authRoutes.get(
         failureRedirect: '/auth/signin'
     }),
     (req, res) => {
-        let id = req.user._id;
-        res.redirect(`/auth/username/${id}`);
+        if (req.user.username === 'unknown') {
+            let id = req.user._id;
+            res.redirect(`/auth/username/${id}`);
+        } else {
+            res.redirect('/');
+        }
     }
 );
 
