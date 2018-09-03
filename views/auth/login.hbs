@@ -1,5 +1,5 @@
-
-<h2>Login</h2>
+<h2>
+  Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
@@ -9,17 +9,17 @@
 
   <label for="password">Password</label>
   <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
-    <div class="error-message">{{ message }}</div>
+  <br> {{#if message }}
+  <div class="error-message">{{ message }}</div>
   {{/if}}
 
   <br><br>
 
   <button>Login</button>
 
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/login">Signup</a>
-  </p>
 </form>
+<a href="/auth/google"><button>Login with Google</button></a>
+<p class="account-message">
+  Don't have an account yet?
+  <a href="/auth/login">Signup</a>
+</p>

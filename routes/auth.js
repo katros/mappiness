@@ -28,11 +28,6 @@ authRoutes.get('/signup', (req, res, next) => {
 authRoutes.post('/signup', (req, res, next) => {
     const { email, password } = req.body;
 
-    if (password === '' || email === '') {
-        res.render('auth/signup', { message: 'Indicate email and password' });
-        return;
-    }
-
     User.findOne({ email }, 'email', (err, user) => {
         if (user !== null) {
             res.render('auth/signup', { message: 'The email already exists' });
@@ -59,11 +54,6 @@ authRoutes.post('/signup', (req, res, next) => {
     });
 });
 
-authRoutes.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
-});
-
 authRoutes.get('/username/:id', (req, res) => {
     const userId = req.params.id;
     res.render('auth/username', { user: userId });
@@ -76,6 +66,32 @@ authRoutes.post('/username/:id', (req, res) => {
     User.findByIdAndUpdate(id, { username }).then(user => {
         res.send('username was added!'); //redirect to global-map page
     });
+});
+
+authRoutes.get(
+    '/google',
+    passport.authenticate('google', {
+        scope: [
+            'https://www.googleapis.com/auth/plus.login',
+            'https://www.googleapis.com/auth/plus.profile.emails.read'
+        ]
+    })
+);
+
+authRoutes.get(
+    '/google/callback',
+    passport.authenticate('google', {
+        failureRedirect: '/auth/signin'
+    }),
+    (req, res) => {
+        let id = req.user._id;
+        res.redirect(`/auth/username/${id}`);
+    }
+);
+
+authRoutes.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
 });
 
 module.exports = authRoutes;
