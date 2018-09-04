@@ -5,7 +5,8 @@ const User = require('./User');
 const storySchema = new Schema(
     {
         story: String,
-        creator: { type: Schema.Types.ObjectId },
+        creatorId: { type: Schema.Types.ObjectId },
+        username: String,
         address: {
             street: String,
             town: String,

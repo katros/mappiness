@@ -12,7 +12,8 @@ router.get('/map', (req, res, next) => {
 router.post('/create-story', (req, res, next) => {
     let story = new Story({
         story: req.body.story,
-        creator: req.user._id,
+        creatorId: req.user._id,
+        username: req.user.username,
         address: {
             street: req.body.street,
             town: req.body.town,
