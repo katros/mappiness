@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Story = require('./Story');
 
 const userSchema = new Schema({
-    username: { type: String, default: 'unknown' },
+    username: { type: String, default: 'unknown', unique: 'true' },
     email: String,
     password: String,
     stories: [{ type: Schema.Types.ObjectId, ref: 'Story' }]

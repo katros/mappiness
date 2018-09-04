@@ -5,7 +5,8 @@ const User = require('./User');
 const storySchema = new Schema(
     {
         story: String,
-        creator: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+        // creator: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+        creator: { type: Schema.Types.ObjectId },
         location: {
             lat: Number,
             lng: Number

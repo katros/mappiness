@@ -10,23 +10,25 @@ L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9r
 map.on('click', function(e) {
     console.log(e.latlng.lat); //getting lat only
     console.log(e.latlng.lng); //getting lng only
+
+    let lat = e.latlng.lat;
+    let lng = e.latlng.lng;
+
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
         var r = results[0];
         if (r) {
-            if (marker) {
-                marker
-                    .setLatLng(r.center)
-                    .setPopupContent(
-                        '<form action="/" method="POST" id="form-container"><textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="height: 200px;"></textarea><button type="submit">ADD</button></form>' +
-                            r.html || r.name
-                    ) //add story here
-                    .openPopup();
-            } else {
-                marker = L.marker(r.center)
-                    .bindPopup(r.name)
-                    .addTo(map)
-                    .openPopup();
-            }
+            marker = L.marker(r.center)
+                .bindPopup(r.name)
+                .addTo(map)
+                .setPopupContent(
+                    '<form action="/protected/create-story" method="POST" id="form-container"><textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="height: 200px;"></textarea><input type="hidden" id="lat" name="lat" value=' +
+                        lat +
+                        '><input type="hidden" id="lng" name="lng" value=' +
+                        lng +
+                        '><button type="submit">ADD</button></form>' +
+                        r.html || r.name
+                )
+                .openPopup();
         }
     });
 });

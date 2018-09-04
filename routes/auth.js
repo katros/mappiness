@@ -64,6 +64,7 @@ authRoutes.post('/username/:id', (req, res) => {
     const { username } = req.body;
 
     User.findByIdAndUpdate(id, { username }).then(user => {
+        console.log('shit');
         res.send('username was added!'); //redirect to global-map page
     });
 });
