@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', start, false);
+document.addEventListener("DOMContentLoaded", start, false);
 
-let map = L.map('map').locate({ setView: true, maxZoom: 16 }),
+let map = L.map("map").locate({ setView: true, maxZoom: 17 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder
     }).addTo(map),
     marker;
-L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0', {
+L.tileLayer("https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
-map.on('click', function(e) {
+map.on("click", function(e) {
     let lat = e.latlng.lat;
     let lng = e.latlng.lng;
 
@@ -46,12 +46,12 @@ function onLocationFound(e) {
     var radius = e.accuracy / 2;
     L.circle(e.latlng, radius).addTo(map);
 }
-map.on('locationfound', onLocationFound);
+map.on("locationfound", onLocationFound);
 
 function start() {
-    axios.get('/protected/stories').then(result => {
+    axios.get("/protected/stories").then(result => {
         result.data.forEach(story => {
-            let date = moment(story.created_at).format('lll');
+            let date = moment(story.created_at).format("lll");
 
             // let city = story.address.city;
             // let town = story.address.town;
@@ -68,24 +68,24 @@ function start() {
 
             // let area = 'not defined';
 
-            // if (city !== 'undefined') {
-            //     area = city;
-            // } else if (town !== 'undefinded') {
-            //     area = town;
-            // } else if (county !== 'undefined') {
-            //     area = county;
-            // } else {
-            //     area = 'not defined';
-            // }
+            if (city) {
+                area = city;
+            } else if (town) {
+                area = town;
+            } else if (county) {
+                area = county;
+            } else {
+                area = "not defined";
+            }
 
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(
                     `<div class="display-story-container"><p>${story.story}</p>
-                    <p>${story.address.street !== 'undefined' ? story.address.street : ''}</p>
-                    <p>${story.address.town !== 'undefined' ? story.address.town : ''}</p>
-                    <p>${story.address.city !== 'undefined' ? story.address.city : ''}</p>
-                    <p>${story.address.county !== 'undefined' ? story.address.county : ''}</p>
-                    <p>${story.address.country !== 'undefined' ? story.address.country : ''}</p>
+                    <p>${story.address.street !== "undefined" ? story.address.street : ""}</p>
+                    <p>${story.address.town !== "undefined" ? story.address.town : ""}</p>
+                    <p>${story.address.city !== "undefined" ? story.address.city : ""}</p>
+                    <p>${story.address.county !== "undefined" ? story.address.county : ""}</p>
+                    <p>${story.address.country !== "undefined" ? story.address.country : ""}</p>
                     <p>${date}</p>
                     </div>`
                 )
