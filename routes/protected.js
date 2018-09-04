@@ -37,5 +37,5 @@ router.get("/stories", (req, res) => {
         res.send(stories);
     });
 });
-// HELLO
+
 module.exports = router;
