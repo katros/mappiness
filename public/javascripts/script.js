@@ -8,13 +8,12 @@ L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9r
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 map.on('click', function(e) {
-    console.log(e.latlng.lat); //getting lat only
-    console.log(e.latlng.lng); //getting lng only
-
     let lat = e.latlng.lat;
     let lng = e.latlng.lng;
 
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
+        let street = results[0].properties.address.road;
+        let city = results[0].properties.address.city;
         var r = results[0];
         if (r) {
             marker = L.marker(r.center)
@@ -25,7 +24,11 @@ map.on('click', function(e) {
                         lat +
                         '><input type="hidden" id="lng" name="lng" value=' +
                         lng +
-                        '><button type="submit">ADD</button></form>' +
+                        '><input type="hidden" id="street" name="street" value="' +
+                        street +
+                        '"><input type="hidden" id="city" name="city" value="' +
+                        city +
+                        '"><button type="submit">ADD</button></form>' +
                         r.html || r.name
                 )
                 .openPopup();

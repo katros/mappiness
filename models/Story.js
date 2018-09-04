@@ -5,8 +5,11 @@ const User = require('./User');
 const storySchema = new Schema(
     {
         story: String,
-        // creator: [{ type: Schema.Types.ObjectId, ref: 'User' }],
         creator: { type: Schema.Types.ObjectId },
+        address: {
+            street: String,
+            city: String
+        },
         location: {
             lat: Number,
             lng: Number
