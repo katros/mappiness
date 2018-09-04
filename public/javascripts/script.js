@@ -1,4 +1,4 @@
-var map = L.map('map').locate({ setView: true, maxZoom: 16 }),
+let map = L.map('map').locate({ setView: true, maxZoom: 16 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder
@@ -32,3 +32,24 @@ map.on('click', function(e) {
         }
     });
 });
+
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
+    L.circle(e.latlng, radius).addTo(map);
+}
+map.on('locationfound', onLocationFound);
+
+//adding markers to the map with data from the db
+const addMarker = [[-40.99497, 174.50808], [-41.30269, 173.63696], [-41.49413, 173.5421]];
+
+for (let i = 0; i < addMarker.length; i++) {
+    marker = new L.marker([addMarker[i][0], addMarker[i][1]]).bindPopup(addMarker[i]).addTo(map);
+}
+
+// axios.get('/protected/map').then(result => {
+//     result.data.forEach(story => {
+//         new L.marker({
+//             location: story.location
+//         });
+//     });
+// });

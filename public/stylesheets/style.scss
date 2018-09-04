@@ -1,5 +1,9 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-    padding: 50px;
     font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
@@ -9,4 +13,15 @@ a {
 
 .leaflet-container {
     font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.map-container #map {
+    height: 90%;
+    margin-top: 50px;
+}
+
+.top-bar {
+    height: 200px;
+    background-color: #00b7ff;
+    width: 100vw;
 }
