@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", start, false);
 
-let map = L.map("map").locate({ setView: true, maxZoom: 17 }),
+let map = L.map("map").locate({ setView: true, maxZoom: 16 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder
@@ -52,7 +52,7 @@ function start() {
     axios.get("/protected/stories").then(result => {
         result.data.forEach(story => {
             let date = moment(story.created_at).format("lll");
-            console.log(story);
+
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(
                     `<div class="display-story-container"><p>${story.story}</p>

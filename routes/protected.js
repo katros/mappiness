@@ -10,23 +10,16 @@ router.get("/map", (req, res, next) => {
 });
 
 router.post("/create-story", (req, res, next) => {
-    const address = {
-        street: req.body.street,
-        town: req.body.town,
-        city: req.body.city,
-        county: req.body.county,
-        country: req.body.country
-    };
-
-    Object.keys(address).forEach(key => {
-        const val = address[key];
-        if (val === "undefined") delete address[key];
-    });
-
     let story = new Story({
         story: req.body.story,
         creator: req.user._id,
-        address,
+        address: {
+            street: req.body.street,
+            town: req.body.town,
+            city: req.body.city,
+            county: req.body.county,
+            country: req.body.country
+        },
         location: { lat: Number(req.body.lat), lng: Number(req.body.lng) }
     });
     story.save();
