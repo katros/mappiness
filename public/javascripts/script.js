@@ -64,15 +64,15 @@ function start() {
 
             // let area = 'not defined';
 
-            // if (city !== 'undefined') {
-            //     area = city;
-            // } else if (town !== 'undefinded') {
-            //     area = town;
-            // } else if (county !== 'undefined') {
-            //     area = county;
-            // } else {
-            //     area = 'not defined';
-            // }
+            if (city) {
+                area = city;
+            } else if (town) {
+                area = town;
+            } else if (county) {
+                area = county;
+            } else {
+                area = 'not defined';
+            }
 
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(

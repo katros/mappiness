@@ -7,5 +7,5 @@ npm-debug.log
 # Environment Variables should NEVER be published
 .env
 
-#google API credentials
+#  google API credentials
 config.js
