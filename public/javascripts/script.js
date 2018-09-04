@@ -1,4 +1,4 @@
-var map = L.map('map').setView([51.505, -0.09], 18),
+var map = L.map('map').locate({ setView: true, maxZoom: 16 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder
@@ -14,22 +14,19 @@ map.on('click', function(e) {
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
         let street = results[0].properties.address.road;
         let city = results[0].properties.address.city;
-        var r = results[0];
+        let r = results[0];
         if (r) {
             marker = L.marker(r.center)
                 .bindPopup(r.name)
                 .addTo(map)
                 .setPopupContent(
-                    '<form action="/protected/create-story" method="POST" id="form-container"><textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="height: 200px;"></textarea><input type="hidden" id="lat" name="lat" value=' +
-                        lat +
-                        '><input type="hidden" id="lng" name="lng" value=' +
-                        lng +
-                        '><input type="hidden" id="street" name="street" value="' +
-                        street +
-                        '"><input type="hidden" id="city" name="city" value="' +
-                        city +
-                        '"><button type="submit">ADD</button></form>' +
-                        r.html || r.name
+                    `<form action="/protected/create-story" method="POST" id="form-container">
+                    <textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="height: 200px;"></textarea>
+                    <input type="hidden" id="lat" name="lat" value=${lat}>
+                    <input type="hidden" id="lng" name="lng" value=${lng}>
+                    <input type="hidden" id="street" name="street" value="${street}">
+                    <input type="hidden" id="city" name="city" value="${city}">
+                    <button type="submit">ADD</button></form>${r.html || r.name}`
                 )
                 .openPopup();
         }
