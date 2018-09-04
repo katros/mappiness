@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', start, false);
 
-let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
+let map = L.map('map').locate({ setView: true, maxZoom: 16 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder
@@ -53,6 +53,10 @@ function start() {
         result.data.forEach(story => {
             let date = moment(story.created_at).format('lll');
 
+            // let city = story.address.city;
+            // let town = story.address.town;
+            // let county = story.address.county;
+
             // let area =
             //     city !== 'undefined'
             //         ? console.log('city', story.address.city)
@@ -64,15 +68,15 @@ function start() {
 
             // let area = 'not defined';
 
-            if (city) {
-                area = city;
-            } else if (town) {
-                area = town;
-            } else if (county) {
-                area = county;
-            } else {
-                area = 'not defined';
-            }
+            // if (city !== 'undefined') {
+            //     area = city;
+            // } else if (town !== 'undefinded') {
+            //     area = town;
+            // } else if (county !== 'undefined') {
+            //     area = county;
+            // } else {
+            //     area = 'not defined';
+            // }
 
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(
