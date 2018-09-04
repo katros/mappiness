@@ -13,10 +13,22 @@ router.post('/create-story', (req, res, next) => {
     let story = new Story({
         story: req.body.story,
         creator: req.user._id,
-        address: { street: req.body.street, city: req.body.city },
+        address: {
+            street: req.body.street,
+            town: req.body.town,
+            city: req.body.city,
+            county: req.body.county,
+            country: req.body.country
+        },
         location: { lat: Number(req.body.lat), lng: Number(req.body.lng) }
     });
     story.save();
+});
+
+router.get('/stories', (req, res) => {
+    Story.find({}).then(stories => {
+        res.send(stories);
+    });
 });
 
 module.exports = router;

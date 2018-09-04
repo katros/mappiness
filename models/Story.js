@@ -8,7 +8,10 @@ const storySchema = new Schema(
         creator: { type: Schema.Types.ObjectId },
         address: {
             street: String,
-            city: String
+            town: String,
+            city: String,
+            county: String,
+            country: String
         },
         location: {
             lat: Number,

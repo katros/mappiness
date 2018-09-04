@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', start, false);
+
 let map = L.map('map').locate({ setView: true, maxZoom: 16 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
@@ -14,7 +16,11 @@ map.on('click', function(e) {
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
         let street = results[0].properties.address.road;
         let city = results[0].properties.address.city;
+        let town = results[0].properties.address.town;
+        let country = results[0].properties.address.country;
+        let county = results[0].properties.address.county;
         let r = results[0];
+        console.log(results[0]);
         if (r) {
             marker = L.marker(r.center)
                 .bindPopup(r.name)
@@ -26,6 +32,9 @@ map.on('click', function(e) {
                     <input type="hidden" id="lng" name="lng" value=${lng}>
                     <input type="hidden" id="street" name="street" value="${street}">
                     <input type="hidden" id="city" name="city" value="${city}">
+                    <input type="hidden" id="country" name="country" value="${country}">
+                    <input type="hidden" id="town" name="town" value="${town}">
+                    <input type="hidden" id="county" name="county" value="${county}">
                     <button type="submit">ADD</button></form>${r.html || r.name}`
                 )
                 .openPopup();
@@ -39,17 +48,48 @@ function onLocationFound(e) {
 }
 map.on('locationfound', onLocationFound);
 
-//adding markers to the map with data from the db
-const addMarker = [[-40.99497, 174.50808], [-41.30269, 173.63696], [-41.49413, 173.5421]];
+function start() {
+    axios.get('/protected/stories').then(result => {
+        result.data.forEach(story => {
+            let date = moment(story.created_at).format('lll');
 
-for (let i = 0; i < addMarker.length; i++) {
-    marker = new L.marker([addMarker[i][0], addMarker[i][1]]).bindPopup(addMarker[i]).addTo(map);
+            // let city = story.address.city;
+            // let town = story.address.town;
+            // let county = story.address.county;
+
+            // let area =
+            //     city !== 'undefined'
+            //         ? console.log('city', story.address.city)
+            //         : town !== 'undefinded'
+            //             ? console.log('town', story.address.town)
+            //             : county !== 'undefined'
+            //                 ? console.log('county', story.address.county)
+            //                 : ' ';
+
+            // let area = 'not defined';
+
+            // if (city !== 'undefined') {
+            //     area = city;
+            // } else if (town !== 'undefinded') {
+            //     area = town;
+            // } else if (county !== 'undefined') {
+            //     area = county;
+            // } else {
+            //     area = 'not defined';
+            // }
+
+            new L.marker([story.location.lat, story.location.lng])
+                .bindPopup(
+                    `<div class="display-story-container"><p>${story.story}</p>
+                    <p>${story.address.street !== 'undefined' ? story.address.street : ''}</p>
+                    <p>${story.address.town !== 'undefined' ? story.address.town : ''}</p>
+                    <p>${story.address.city !== 'undefined' ? story.address.city : ''}</p>
+                    <p>${story.address.county !== 'undefined' ? story.address.county : ''}</p>
+                    <p>${story.address.country !== 'undefined' ? story.address.country : ''}</p>
+                    <p>${date}</p>
+                    </div>`
+                )
+                .addTo(map);
+        });
+    });
 }
-
-// axios.get('/protected/map').then(result => {
-//     result.data.forEach(story => {
-//         new L.marker({
-//             location: story.location
-//         });
-//     });
-// });
