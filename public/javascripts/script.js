@@ -39,8 +39,10 @@ map.on('click', function(e) {
         let town = results[0].properties.address.town;
         let country = results[0].properties.address.country;
         let county = results[0].properties.address.county;
-        let r = results[0];
+        let city_district = results[0].properties.address.city_district;
 
+        let r = results[0];
+        console.log(results[0]);
         if (r) {
             marker = L.marker(r.center)
                 .bindPopup(r.name)
@@ -51,6 +53,7 @@ map.on('click', function(e) {
                     <input type="hidden" id="lat" name="lat" value=${lat}>
                     <input type="hidden" id="lng" name="lng" value=${lng}>
                     <input type="hidden" id="street" name="street" value="${street}">
+                    <input type="hidden" id="city_district" name="city_district" value="${city_district}">
                     <input type="hidden" id="city" name="city" value="${city}">
                     <input type="hidden" id="country" name="country" value="${country}">
                     <input type="hidden" id="town" name="town" value="${town}">
@@ -79,6 +82,7 @@ function start() {
                     `<p>${story.username}</p>
                     <div class="display-story-container"><p>${story.story}</p>
                     <p>${story.address.street ? story.address.street : ''}</p>
+                    <p>${story.address.town ? story.address.city_district : ''}</p>
                     <p>${story.address.town ? story.address.town : ''}</p>
                     <p>${story.address.city ? story.address.city : ''}</p>
                     <p>${story.address.county ? story.address.county : ''}</p>

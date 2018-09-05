@@ -15,6 +15,7 @@ router.get('/map', (req, res, next) => {
 
 router.post('/create-story', (req, res, next) => {
     let street = req.body.street === 'undefined' ? '' : req.body.street;
+    let city_district = req.body.city_district === 'undefined' ? '' : req.body.city_district;
     let town = req.body.town === 'undefined' ? '' : req.body.town;
     let city = req.body.city === 'undefined' ? '' : req.body.city;
     let county = req.body.county === 'undefined' ? '' : req.body.county;
@@ -26,6 +27,7 @@ router.post('/create-story', (req, res, next) => {
         username: req.user.username,
         address: {
             street,
+            city_district,
             town,
             city,
             county,

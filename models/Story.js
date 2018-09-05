@@ -9,6 +9,7 @@ const storySchema = new Schema(
         username: String,
         address: {
             street: String,
+            city_district: String,
             town: String,
             city: String,
             county: String,
