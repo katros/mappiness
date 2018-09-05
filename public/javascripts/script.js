@@ -55,7 +55,8 @@ map.on('click', function(e) {
                     <input type="hidden" id="country" name="country" value="${country}">
                     <input type="hidden" id="town" name="town" value="${town}">
                     <input type="hidden" id="county" name="county" value="${county}">
-                    <button type="submit">ADD</button></form>${r.html || r.name}`
+                    <button type="submit">ADD</button>
+                    </form>${r.html || r.name}`
                 )
                 .openPopup();
         }

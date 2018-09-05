@@ -33,7 +33,9 @@ router.post('/create-story', (req, res, next) => {
         },
         location: { lat: Number(req.body.lat), lng: Number(req.body.lng) }
     });
-    story.save();
+    story.save().then(result => {
+        res.redirect('/protected/map');
+    });
 });
 
 router.get('/stories', (req, res) => {
@@ -45,6 +47,7 @@ router.get('/stories', (req, res) => {
 router.get('/user-profile', (req, res, next) => {
     let username = req.user.username;
     Story.find({ username })
+        .sort([['updated_at', -1]])
         .then(stories => {
             let customStories = {
                 username,
