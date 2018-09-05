@@ -91,10 +91,6 @@ a {
     border: 2px solid red;
 }
 
-.followbtn__follow {
-    background-color: #00b7ff;
-}
-
-.followbtn__nofollow {
-    background-color: #ffffff;
+.followbtn.active {
+    font-size: 30px;
 }

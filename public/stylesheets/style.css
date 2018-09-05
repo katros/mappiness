@@ -72,4 +72,7 @@ a {
 .user-story-container {
   border: 2px solid red; }
 
+.followbtn.active {
+  font-size: 30px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -124,7 +124,7 @@ router.post("/:id", (req, res) => {
 
 // following
 
-router.get("/follow/:username", (req, res) => {
+router.get("/follow/:username", (req, response) => {
     const username = req.params.username; //user we want to follow
     const id = req.user.id; // own id
 
@@ -135,18 +135,24 @@ router.get("/follow/:username", (req, res) => {
             // if it does NOT find user = -1
             if (res.following.indexOf(user.username) === -1) {
                 //push element from res.following and .save()
-                User.update({ _id: id }, { $push: { following: user.username } }, { new: true }).then(
-                    user => {
-                        console.log("USER:", user);
-                    }
-                );
+                User.findByIdAndUpdate(
+                    { _id: id },
+                    { $push: { following: user.username } },
+                    { new: true }
+                ).then(user => {
+                    console.log("USER:", user);
+                    response.send(user);
+                });
             } else {
                 // remove element in res.following and .save()
-                User.update({ _id: id }, { $pull: { following: user.username } }, { new: true }).then(
-                    user => {
-                        console.log("USER REMOVE:", user);
-                    }
-                );
+                User.findByIdAndUpdate(
+                    { _id: id },
+                    { $pull: { following: user.username } },
+                    { new: true }
+                ).then(user => {
+                    console.log("USER REMOVE:", user);
+                    response.send(user);
+                });
             }
         });
     });
