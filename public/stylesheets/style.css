@@ -3,13 +3,13 @@
   box-sizing: border-box; }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif; }
 
 a {
   color: #00b7ff; }
 
 .leaflet-container {
-  font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif; }
 
 .map-container #map {
   height: 100vh;
@@ -40,7 +40,8 @@ a {
   .sidebar__text {
     margin-top: 100px;
     padding: 40px;
-    flex-basis: 90%; }
+    flex-basis: 90%;
+    margin-top: 200px; }
   .sidebar__icon button {
     flex-basis: 10%;
     margin-top: 70px;

@@ -79,7 +79,7 @@ function start() {
 
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(
-                    `<p>${story.username}</p>
+                    `<a href="/protected/user/${story.username}"><p>${story.username}</p></a>
                     <div class="display-story-container"><p>${story.story}</p>
                     <p>${story.address.street ? story.address.street : ""}</p>
                     <p>${story.address.city_district ? story.address.city_district : ""}</p>
