@@ -40,7 +40,7 @@ map.on("click", function(e) {
         let country = results[0].properties.address.country;
         let county = results[0].properties.address.county;
         let r = results[0];
-        console.log(results[0]);
+
         if (r) {
             marker = L.marker(r.center)
                 .bindPopup(r.name)
@@ -55,7 +55,8 @@ map.on("click", function(e) {
                     <input type="hidden" id="country" name="country" value="${country}">
                     <input type="hidden" id="town" name="town" value="${town}">
                     <input type="hidden" id="county" name="county" value="${county}">
-                    <button type="submit">ADD</button></form>${r.html || r.name}`
+                    <button type="submit">ADD</button>
+                    </form>${r.html || r.name}`
                 )
                 .openPopup();
         }

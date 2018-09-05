@@ -9,3 +9,6 @@ npm-debug.log
 
 #  google API credentials
 config.js
+
+public/stylesheets/style.css
+public/stylesheets/style.css.map

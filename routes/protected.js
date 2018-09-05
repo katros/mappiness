@@ -33,7 +33,9 @@ router.post('/create-story', (req, res, next) => {
         },
         location: { lat: Number(req.body.lat), lng: Number(req.body.lng) }
     });
-    story.save();
+    story.save().then(result => {
+        res.redirect('/protected/map');
+    });
 });
 
 router.get('/stories', (req, res) => {
@@ -45,12 +47,50 @@ router.get('/stories', (req, res) => {
 router.get('/user-profile', (req, res, next) => {
     let username = req.user.username;
     Story.find({ username })
+        .sort([['updated_at', -1]])
         .then(stories => {
             let customStories = {
                 username,
                 stories
             };
             res.render('protected/user-profile', { customStories });
+        })
+        .catch(console.error);
+});
+
+//deleting story
+
+router.post('/:id/delete', (req, res) => {
+    Story.findByIdAndRemove(req.params.id)
+        .then(result => {
+            res.redirect('/protected/user-profile');
+        })
+        .catch(console.error);
+});
+
+//updating story
+router.get('/:id/edit', (req, res) => {
+    const { id } = req.params;
+    Story.findById(id)
+        .then(story => {
+            res.render('protected/edit', { story });
+        })
+        .catch(console.error);
+});
+
+router.post('/:id', (req, res) => {
+    const { id } = req.params;
+    const { story } = req.body;
+
+    Story.findByIdAndUpdate(
+        id,
+        {
+            story
+        },
+        { new: true }
+    )
+        .then(story => {
+            res.redirect('/protected/user-profile');
         })
         .catch(console.error);
 });

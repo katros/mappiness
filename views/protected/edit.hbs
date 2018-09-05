@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="card">
+        <h2>EDIT YOUR STORY</h2>
+        <form action="/protected/{{story._id}}" method='POST'>
+            <textarea type="text" id='story' name='story'>{{story.story}}</textarea>
+            <br>
+            <button type='submit'>UPDATE</button>
+        </form>
+    </div>
+</div>
