@@ -46,6 +46,8 @@ router.get('/stories', (req, res) => {
     });
 });
 
+//logged user profile page
+
 router.get('/user-profile', (req, res, next) => {
     let username = req.user.username;
     Story.find({ username })
@@ -58,6 +60,28 @@ router.get('/user-profile', (req, res, next) => {
             res.render('protected/user-profile', { customStories });
         })
         .catch(console.error);
+});
+
+//random user profile page
+
+router.get('/user/:username', (req, res, next) => {
+    const username = req.params.username;
+    const currUser = req.user.username;
+
+    if (username !== currUser) {
+        Story.find({ username })
+            .sort([['updated_at', -1]])
+            .then(stories => {
+                let userStories = {
+                    username,
+                    stories
+                };
+                res.render('protected/user', { userStories });
+            })
+            .catch(console.error);
+    } else {
+        res.redirect('/protected/user-profile');
+    }
 });
 
 //deleting story
