@@ -31,6 +31,8 @@ map.on('click', function(e) {
     let lat = e.latlng.lat;
     let lng = e.latlng.lng;
 
+    if (marker) marker.remove();
+
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
         let street = results[0].properties.address.road;
         let city = results[0].properties.address.city;
@@ -38,7 +40,7 @@ map.on('click', function(e) {
         let country = results[0].properties.address.country;
         let county = results[0].properties.address.county;
         let r = results[0];
-        console.log(results[0]);
+
         if (r) {
             marker = L.marker(r.center)
                 .bindPopup(r.name)

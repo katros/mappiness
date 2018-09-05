@@ -55,4 +55,41 @@ router.get('/user-profile', (req, res, next) => {
         .catch(console.error);
 });
 
+//deleting story
+
+router.post('/:id/delete', (req, res) => {
+    Story.findByIdAndRemove(req.params.id)
+        .then(result => {
+            res.redirect('/protected/user-profile');
+        })
+        .catch(console.error);
+});
+
+//updating story
+router.get('/:id/edit', (req, res) => {
+    const { id } = req.params;
+    Story.findById(id)
+        .then(story => {
+            res.render('protected/edit', { story });
+        })
+        .catch(console.error);
+});
+
+router.post('/:id', (req, res) => {
+    const { id } = req.params;
+    const { story } = req.body;
+
+    Story.findByIdAndUpdate(
+        id,
+        {
+            story
+        },
+        { new: true }
+    )
+        .then(story => {
+            res.redirect('/protected/user-profile');
+        })
+        .catch(console.error);
+});
+
 module.exports = router;
