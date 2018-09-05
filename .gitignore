@@ -10,5 +10,6 @@ npm-debug.log
 #  google API credentials
 config.js
 
+# ignore stylesheet
 public/stylesheets/style.css
 public/stylesheets/style.css.map

@@ -94,12 +94,4 @@ function start() {
 $(".sidebar-toggle").click(function() {
     $(".sidebar-toggle").toggleClass("is-closed");
     $(".sidebar").toggleClass("is-closed");
-
-    if (icon.hasClass("left")) {
-        icon.addClass("right");
-        icon.removeClass("left");
-    } else {
-        icon.addClass("right");
-        icon.removeClass("left");
-    }
 });
