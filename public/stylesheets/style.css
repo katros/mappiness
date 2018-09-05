@@ -3,22 +3,60 @@
   box-sizing: border-box; }
 
 body {
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00b7ff; }
 
 .leaflet-container {
-  font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+  font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
 
 .map-container #map {
-  height: 90%;
-  margin-top: 50px; }
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; }
 
 .top-bar {
   height: 50px;
   background-color: #00b7ff;
-  width: 100vw; }
+  width: 100vw;
+  z-index: 1000 !important; }
+
+.sidebar {
+  z-index: 20;
+  background-color: #ffffff;
+  width: 400px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  transition: 0.7s; }
+  .sidebar__text {
+    padding: 40px;
+    flex-basis: 90%; }
+  .sidebar__icon button {
+    flex-basis: 10%;
+    margin-top: 70px;
+    font-size: 60px;
+    outline: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer; }
+  .sidebar.is-closed {
+    transform: translateX(-350px); }
+
+.sidebar-toggle {
+  transform: rotate(0deg); }
+  .sidebar-toggle.is-closed {
+    transform: translateX(60px); }
+
+.icon .is-closed {
+  transform: rotate(180deg); }
 
 .user-story-container {
   border: 2px solid red; }

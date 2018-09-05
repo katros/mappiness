@@ -4,14 +4,14 @@ let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder,
-        showResultIcons: true,
+        // showResultIcons: true,
         defaultMarkGeocode: false
     })
         .on('markgeocode', function(e) {
             if (poly) {
                 poly.remove();
             }
-            var bbox = e.geocode.bbox;
+            const bbox = e.geocode.bbox;
             poly = L.polygon([
                 bbox.getSouthEast(),
                 bbox.getNorthEast(),
@@ -20,8 +20,8 @@ let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
             ]).addTo(map);
             map.fitBounds(poly.getBounds());
         })
-        .addTo(map);
-let marker;
+        .addTo(map),
+    marker;
 
 L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -82,7 +82,7 @@ function start() {
                     `<p>${story.username}</p>
                     <div class="display-story-container"><p>${story.story}</p>
                     <p>${story.address.street ? story.address.street : ''}</p>
-                    <p>${story.address.town ? story.address.city_district : ''}</p>
+                    <p>${story.address.city_district ? story.address.city_district : ''}</p>
                     <p>${story.address.town ? story.address.town : ''}</p>
                     <p>${story.address.city ? story.address.city : ''}</p>
                     <p>${story.address.county ? story.address.county : ''}</p>
@@ -94,3 +94,8 @@ function start() {
         });
     });
 }
+
+$('.sidebar-toggle').click(function() {
+    $('.sidebar-toggle').toggleClass('is-closed');
+    $('.sidebar').toggleClass('is-closed');
+});
