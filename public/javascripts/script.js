@@ -1,17 +1,17 @@
-document.addEventListener('DOMContentLoaded', start, false);
+document.addEventListener("DOMContentLoaded", start, false);
 let poly;
-let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
+let map = L.map("map").locate({ setView: true, maxZoom: 17 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
         geocoder: geocoder,
-        showResultIcons: true,
+        // showResultIcons: true,
         defaultMarkGeocode: false
     })
-        .on('markgeocode', function(e) {
+        .on("markgeocode", function(e) {
             if (poly) {
                 poly.remove();
             }
-            var bbox = e.geocode.bbox;
+            const bbox = e.geocode.bbox;
             poly = L.polygon([
                 bbox.getSouthEast(),
                 bbox.getNorthEast(),
@@ -20,16 +20,18 @@ let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
             ]).addTo(map);
             map.fitBounds(poly.getBounds());
         })
-        .addTo(map);
-let marker;
+        .addTo(map),
+    marker;
 
-L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0', {
+L.tileLayer("https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0", {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-map.on('click', function(e) {
+map.on("click", function(e) {
     let lat = e.latlng.lat;
     let lng = e.latlng.lng;
+
+    if (marker) marker.remove();
 
     geocoder.reverse(e.latlng, map.options.crs.scale(map.getZoom()), function(results) {
         let street = results[0].properties.address.road;
@@ -64,22 +66,22 @@ function onLocationFound(e) {
     let radius = e.accuracy / 2;
     L.circle(e.latlng, radius).addTo(map);
 }
-map.on('locationfound', onLocationFound);
+map.on("locationfound", onLocationFound);
 
 function start() {
-    axios.get('/protected/stories').then(result => {
+    axios.get("/protected/stories").then(result => {
         result.data.forEach(story => {
-            let date = moment(story.created_at).format('lll');
+            let date = moment(story.created_at).format("lll");
 
             new L.marker([story.location.lat, story.location.lng])
                 .bindPopup(
                     `<p>${story.username}</p>
                     <div class="display-story-container"><p>${story.story}</p>
-                    <p>${story.address.street ? story.address.street : ''}</p>
-                    <p>${story.address.town ? story.address.town : ''}</p>
-                    <p>${story.address.city ? story.address.city : ''}</p>
-                    <p>${story.address.county ? story.address.county : ''}</p>
-                    <p>${story.address.country ? story.address.country : ''}</p
+                    <p>${story.address.street ? story.address.street : ""}</p>
+                    <p>${story.address.town ? story.address.town : ""}</p>
+                    <p>${story.address.city ? story.address.city : ""}</p>
+                    <p>${story.address.county ? story.address.county : ""}</p>
+                    <p>${story.address.country ? story.address.country : ""}</p
                     <p>${date}</p>
                     </div>`
                 )
@@ -87,3 +89,16 @@ function start() {
         });
     });
 }
+
+$(".sidebar-toggle").click(function() {
+    $(".sidebar-toggle").toggleClass("is-closed");
+    $(".sidebar").toggleClass("is-closed");
+
+    if (icon.hasClass("left")) {
+        icon.addClass("right");
+        icon.removeClass("left");
+    } else {
+        icon.addClass("right");
+        icon.removeClass("left");
+    }
+});
