@@ -49,7 +49,7 @@ map.on("click", function(e) {
                 .addTo(map)
                 .setPopupContent(
                     `<form action="/protected/create-story" method="POST" id="form-container">
-                    <textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="height: 200px;"></textarea>
+                    <textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="width: 200px; height:50px;"></textarea>
                     <input type="hidden" id="lat" name="lat" value=${lat}>
                     <input type="hidden" id="lng" name="lng" value=${lng}>
                     <input type="hidden" id="street" name="street" value="${street}">

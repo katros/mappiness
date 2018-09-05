@@ -36,6 +36,7 @@ a {
   top: 0;
   left: 0;
   display: flex;
+  margin-top: 50px;
   transition: 0.7s; }
   .sidebar__text {
     margin-top: 100px;
@@ -62,7 +63,8 @@ a {
   transform: rotate(180deg); }
 
 .leaflet-left .leaflet-control {
-  margin-left: 70px !important; }
+  margin-left: 70px !important;
+  margin-top: 70px !important; }
 
 .profile {
   padding-top: 70px; }

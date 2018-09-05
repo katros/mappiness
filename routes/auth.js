@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const authRoutes = express.Router();
 const User = require('../models/User');
+const ensureLogin = require('connect-ensure-login');
 
 // Bcrypt to encrypt passwords
 const bcrypt = require('bcrypt');
@@ -14,7 +15,7 @@ authRoutes.get('/login', (req, res, next) => {
 authRoutes.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/protected/map',
         failureRedirect: '/auth/login',
         failureFlash: true,
         passReqToCallback: true
@@ -46,17 +47,24 @@ authRoutes.post('/signup', (req, res, next) => {
             .save()
             .then(user => {
                 const id = user._id;
-                res.redirect(`username/${id}`);
+
+                req.login(user, err => {
+                    if (err) throw err;
+                    res.redirect(`/auth/username/${id}`);
+                });
             })
             .catch(err => {
+                console.error(err);
                 res.render('auth/signup', { message: 'Something went wrong' });
             });
     });
 });
 
 authRoutes.get('/username/:id', (req, res) => {
-    const userId = req.params.id;
-    res.render('auth/username', { user: userId });
+    if (req.user) {
+        const userId = req.params.id;
+        res.render('auth/username', { user: userId });
+    } else res.redirect('/');
 });
 
 authRoutes.post('/username/:id', (req, res) => {
@@ -64,8 +72,7 @@ authRoutes.post('/username/:id', (req, res) => {
     const { username } = req.body;
 
     User.findByIdAndUpdate(id, { username }).then(user => {
-        console.log('shit');
-        res.send('username was added!'); //redirect to global-map page
+        res.redirect('/protected/map');
     });
 });
 
