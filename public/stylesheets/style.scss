@@ -4,7 +4,7 @@
 }
 
 body {
-    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -12,7 +12,7 @@ a {
 }
 
 .leaflet-container {
-    font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .map-container #map {
@@ -85,10 +85,14 @@ a {
 .profile {
     padding-top: 70px;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 42f3a64f9bbca4d0a4690c91a5aa25198e8803ad
 .user-story-container {
     border: 2px solid red;
+}
+
+.followbtn__follow {
+    background-color: #00b7ff;
+}
+
+.followbtn__nofollow {
+    background-color: #ffffff;
 }

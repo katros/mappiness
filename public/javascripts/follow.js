@@ -1,10 +1,10 @@
 // follow button
 $(document).ready(function() {
+    let username = $("#username-title").html();
     $(".follow").click(function() {
-        console.log("click");
         $.ajax({
             // AJAX
-            url: "/protected/follow",
+            url: `/protected/follow/${username}`,
             type: "GET",
             dataType: "json",
             success: function(data, status) {
@@ -14,3 +14,5 @@ $(document).ready(function() {
         });
     });
 });
+
+//

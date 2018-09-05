@@ -7,45 +7,35 @@
 <div class="profile">
 
     <h1>{{customStories.username}}</h1>
-    <<<<<<< HEAD <button class="follow">Follow</button>
 
-        {{!--
-        <form action="/protected/follow" method="POST">
-        </form> --}}
+    <br> {{#each customStories.stories}}
+    <div class="user-story-container">
+        <p>{{this.story}}</p>
 
-        <br>
-        <br> {{#each customStories.stories}}
-        <div class="user-story-container">
-            <p>{{this.story}}</p>
+        {{#if this.address.street}}
+        <p>{{this.address.street}}</p>
+        {{/if}} {{#if this.address.city_district}}
+        <p>{{this.address.city_district}}</p>
+        {{/if}} {{#if this.address.town}}
+        <p>{{this.address.town}}</p>
+        {{/if}} {{#if this.address.city}}
+        <p>{{this.address.city}}</p>
+        {{/if}} {{#if this.address.county}}
+        <p>{{this.address.county}}</p>
+        {{/if}} {{#if this.address.country}}
+        <p>{{this.address.country}}</p>
+        {{/if}}
+        <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
 
-            =======
-            <br> {{#each customStories.stories}}
-            <div class="user-story-container">
-                <p>{{this.story}}</p>
-
-                >>>>>>> 42f3a64f9bbca4d0a4690c91a5aa25198e8803ad {{#if this.address.street}}
-                <p>{{this.address.street}}</p>
-                {{/if}} {{#if this.address.city_district}}
-                <p>{{this.address.city_district}}</p>
-                {{/if}} {{#if this.address.town}}
-                <p>{{this.address.town}}</p>
-                {{/if}} {{#if this.address.city}}
-                <p>{{this.address.city}}</p>
-                {{/if}} {{#if this.address.county}}
-                <p>{{this.address.county}}</p>
-                {{/if}} {{#if this.address.country}}
-                <p>{{this.address.country}}</p>
-                {{/if}}
-                <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
-
-                <div class="story-btn-container">
-                    <form action="/protected/{{this._id}}/delete" method='POST'>
-                        <button type='submit'>DELETE</button>
-                    </form>
-                    <a href="/protected/{{this._id}}/edit"><button>EDIT</button></a>
-                </div>
-            </div>
-            <br> {{/each}}
+        <div class="story-btn-container">
+            <form action="/protected/{{this._id}}/delete" method='POST'>
+                <button type='submit'>DELETE</button>
+            </form>
+            <a href="/protected/{{this._id}}/edit"><button>EDIT</button></a>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script src='/javascripts/follow.js'></script>
+    </div>
+    <br> {{/each}}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src='/javascripts/follow.js'></script>
