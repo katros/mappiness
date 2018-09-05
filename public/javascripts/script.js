@@ -1,11 +1,28 @@
 document.addEventListener('DOMContentLoaded', start, false);
-
-let map = L.map('map').locate({ setView: true, maxZoom: 16 }),
+let poly;
+let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
     geocoder = L.Control.Geocoder.nominatim(),
     control = L.Control.geocoder({
-        geocoder: geocoder
-    }).addTo(map),
-    marker;
+        geocoder: geocoder,
+        showResultIcons: true,
+        defaultMarkGeocode: false
+    })
+        .on('markgeocode', function(e) {
+            if (poly) {
+                poly.remove();
+            }
+            var bbox = e.geocode.bbox;
+            poly = L.polygon([
+                bbox.getSouthEast(),
+                bbox.getNorthEast(),
+                bbox.getNorthWest(),
+                bbox.getSouthWest()
+            ]).addTo(map);
+            map.fitBounds(poly.getBounds());
+        })
+        .addTo(map);
+let marker;
+
 L.tileLayer('https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -44,7 +61,7 @@ map.on('click', function(e) {
 });
 
 function onLocationFound(e) {
-    var radius = e.accuracy / 2;
+    let radius = e.accuracy / 2;
     L.circle(e.latlng, radius).addTo(map);
 }
 map.on('locationfound', onLocationFound);
@@ -58,11 +75,11 @@ function start() {
                 .bindPopup(
                     `<p>${story.username}</p>
                     <div class="display-story-container"><p>${story.story}</p>
-                    <p>${story.address.street !== 'undefined' ? story.address.street : ''}</p>
-                    <p>${story.address.town !== 'undefined' ? story.address.town : ''}</p>
-                    <p>${story.address.city !== 'undefined' ? story.address.city : ''}</p>
-                    <p>${story.address.county !== 'undefined' ? story.address.county : ''}</p>
-                    <p>${story.address.country !== 'undefined' ? story.address.country : ''}</p
+                    <p>${story.address.street ? story.address.street : ''}</p>
+                    <p>${story.address.town ? story.address.town : ''}</p>
+                    <p>${story.address.city ? story.address.city : ''}</p>
+                    <p>${story.address.county ? story.address.county : ''}</p>
+                    <p>${story.address.country ? story.address.country : ''}</p
                     <p>${date}</p>
                     </div>`
                 )

@@ -1,0 +1,24 @@
+<div class="top-bar">
+    <a href="/auth/logout"><button>LOG OUT</button></a>
+    <a href="/protected/map"><button>GO BACK TO MAP</button></a>
+</div>
+
+<br>
+<h1>{{customStories.username}}</h1>
+<br> {{#each customStories.stories}}
+<p>{{this.story}}</p>
+
+{{#if this.address.street}}
+<p>{{this.address.street}}</p>
+{{/if}} {{#if this.address.town}}
+<p>{{this.address.town}}</p>
+{{/if}} {{#if this.address.city}}
+<p>{{this.address.city}}</p>
+{{/if}} {{#if this.address.county}}
+<p>{{this.address.county}}</p>
+{{/if}} {{#if this.address.country}}
+<p>{{this.address.country}}</p>
+{{/if}}
+<p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+
+<br> {{/each}}
