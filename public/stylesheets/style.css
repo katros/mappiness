@@ -63,6 +63,9 @@ a {
 .leaflet-left .leaflet-control {
   margin-left: 70px !important; }
 
+.profile {
+  padding-top: 70px; }
+
 .user-story-container {
   border: 2px solid red; }
 

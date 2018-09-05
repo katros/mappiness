@@ -97,4 +97,16 @@ router.post("/:id", (req, res) => {
         .catch(console.error);
 });
 
+// following
+/*
+Follow-Btn gets Id + username
+adds name-link to user-profile
+*/
+router.get("/follow", function(req, res) {
+    const followName = req.user.username;
+    const followId = req.user.id;
+    console.log("GET NAME:", followName);
+    res.send({ msg: "User followed/unfollowed!" });
+});
+
 module.exports = router;
