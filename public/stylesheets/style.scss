@@ -18,7 +18,7 @@ a {
 .map-container #map {
     height: 100vh;
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -29,7 +29,8 @@ a {
     height: 50px;
     background-color: #00b7ff;
     width: 100vw;
-    z-index: 1000 !important;
+    z-index: 1000;
+    position: fixed;
 }
 
 .sidebar {
@@ -45,6 +46,7 @@ a {
     transition: 0.7s;
 
     &__text {
+        margin-top: 100px;
         padding: 40px;
         flex-basis: 90%;
     }
@@ -73,6 +75,10 @@ a {
 
 .icon .is-closed {
     transform: rotate(180deg);
+}
+
+.leaflet-left .leaflet-control {
+    margin-left: 70px !important;
 }
 
 .user-story-container {
