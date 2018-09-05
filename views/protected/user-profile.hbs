@@ -7,6 +7,7 @@
 <div class="profile">
 
     <h1>{{customStories.username}}</h1>
+
     <br> {{#each customStories.stories}}
     <div class="user-story-container">
         <p>{{this.story}}</p>
@@ -35,4 +36,6 @@
     </div>
     <br> {{/each}}
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src='/javascripts/follow.js'></script>
