@@ -5,8 +5,7 @@ const Story = require('./Story');
 const userSchema = new Schema({
     username: { type: String, default: 'unknown', unique: 'true' },
     email: String,
-    password: String,
-    stories: [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+    password: String
 });
 
 const User = mongoose.model('User', userSchema);

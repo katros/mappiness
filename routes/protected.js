@@ -36,7 +36,7 @@ router.post('/create-story', (req, res, next) => {
         location: { lat: Number(req.body.lat), lng: Number(req.body.lng) }
     });
     story.save().then(result => {
-        res.redirect('/protected/map');
+        res.redirect('/protected/user-profile');
     });
 });
 
