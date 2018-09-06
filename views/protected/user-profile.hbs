@@ -34,7 +34,8 @@
 
         <div class="story-btn-container">
             <form action="/protected/{{this._id}}/delete" method='POST'>
-                <svg class="story-icon story-icon__delete"><use xlink:href="/images/sprite.svg#icon-trash-2"></use></svg>
+                <button type="submit"><svg class="story-icon story-icon__delete"><use xlink:href="/images/sprite.svg#icon-trash-2"></use></svg></button>
+
             </form>
             <a href="/protected/{{this._id}}/edit"><svg class="story-icon story-icon__edit"><use xlink:href="/images/sprite.svg#icon-edit"></use></svg></a>
         </div>
