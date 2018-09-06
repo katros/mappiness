@@ -1,8 +1,102 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00b7ff;
+}
+
+.leaflet-container {
+    font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.map-container #map {
+    height: 100vh;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.top-bar {
+    height: 50px;
+    background-color: #00b7ff;
+    width: 100vw;
+    z-index: 1000;
+    position: fixed;
+}
+
+.sidebar {
+    z-index: 20;
+    background-color: #ffffff;
+    width: 400px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    margin-top: 50px;
+
+    transition: 0.7s;
+
+    &__text {
+        margin-top: 100px;
+        padding: 40px;
+        flex-basis: 90%;
+        margin-top: 200px;
+    }
+
+    &__icon button {
+        flex-basis: 10%;
+        margin-top: 70px;
+        font-size: 60px;
+        outline: none;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+
+    &.is-closed {
+        transform: translateX(-350px);
+    }
+}
+
+.sidebar-toggle {
+    transform: rotate(0deg);
+    &.is-closed {
+        transform: translateX(60px);
+    }
+}
+
+.icon .is-closed {
+    transform: rotate(180deg);
+}
+
+.leaflet-left .leaflet-control {
+    margin-left: 70px !important;
+    margin-top: 70px !important;
+}
+
+.profile {
+    padding-top: 70px;
+}
+.user-story-container {
+    border: 2px solid red;
+}
+
+.followbtn.active {
+    font-size: 30px;
+}
+
+//added to test
+.leaflet-marker-icon {
+    width: 41px !important;
+    content: url(https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Pink.png);
 }
