@@ -93,12 +93,4 @@ a {
 .followbtn.active {
   font-size: 30px; }
 
-.leaflet-marker-icon {
-  width: 50px !important;
-  height: 50px !important;
-  content: url(marker-black.svg); }
-
-.leaflet-marker-shadow {
-  visibility: hidden; }
-
 /*# sourceMappingURL=style.css.map */

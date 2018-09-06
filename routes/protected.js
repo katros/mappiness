@@ -42,8 +42,16 @@ router.post('/create-story', (req, res, next) => {
 });
 
 router.get('/stories', (req, res) => {
+    let user = req.user.username;
+    let followingList = req.user.following;
+
     Story.find({}).then(stories => {
-        res.send(stories);
+        let markerInfo = {
+            stories,
+            user,
+            followingList
+        };
+        res.send(markerInfo);
     });
 });
 
