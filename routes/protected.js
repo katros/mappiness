@@ -171,12 +171,4 @@ router.get("/follow/:username", (req, response) => {
     });
 });
 
-/*
-
-Helene, find first the user we want to follow (user.find(username:req.params.username)
-.then(userWeWantToFollow => User.find(currentUser).exec(check if we have the userWeWantToFollow.id
-    in the currentUser.following array, if we have it we remove it, if we don’t have it we add it)
-
-*/
-
 module.exports = router;
