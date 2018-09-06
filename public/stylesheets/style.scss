@@ -232,7 +232,12 @@ body {
     }
 }
 
-.leaflet-control-container.leaflet-right.leaflet-control-geocoder {
-    position: fixed;
-    margin-top: 200px;
+.leaflet-interactive {
+    stroke: #636363;
+    fill: #636363;
+}
+
+.leaflet-touch .leaflet-control-geocoder {
+    padding-top: 100px !important;
+    position: fixed !important;
 }

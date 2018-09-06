@@ -22,7 +22,7 @@ $(document).ready(function() {
     });
 
     let poly;
-    let map = L.map("map").locate({ setView: true, maxZoom: 17, setZoom: 1 }),
+    let map = L.map("map").locate({ setView: true, maxZoom: 17 }),
         geocoder = L.Control.Geocoder.nominatim(),
         control = L.Control.geocoder({
             geocoder: geocoder,
@@ -47,7 +47,8 @@ $(document).ready(function() {
     L.tileLayer(
         "https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0",
         {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+            minZoom: 2
         }
     ).addTo(map);
 
