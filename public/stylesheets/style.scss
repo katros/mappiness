@@ -99,4 +99,9 @@ a {
 .leaflet-marker-icon {
     width: 41px !important;
     content: url(https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Pink.png);
+    box-shadow: transparent !important;
+}
+
+.leaflet-marker-shadow {
+    visibility: hidden;
 }
