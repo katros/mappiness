@@ -71,7 +71,7 @@ authRoutes.post('/username/:id', (req, res) => {
     const { id } = req.params;
     const { username } = req.body;
 
-    User.findByIdAndUpdate(id, { username }).then(user => {
+    User.findByIdAndUpdate(id, { username }, { runValidators: true }).then(user => {
         res.redirect('/protected/map');
     });
 });

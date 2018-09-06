@@ -4,7 +4,7 @@
 }
 
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -12,7 +12,7 @@ a {
 }
 
 .leaflet-container {
-    font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .map-container #map {
@@ -93,4 +93,10 @@ a {
 
 .followbtn.active {
     font-size: 30px;
+}
+
+//added to test
+.leaflet-marker-icon {
+    width: 41px !important;
+    content: url(https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Pink.png);
 }

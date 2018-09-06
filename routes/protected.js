@@ -70,17 +70,27 @@ router.get('/user-profile', (req, res, next) => {
 router.get('/user/:username', (req, res, next) => {
     const username = req.params.username;
     const currUser = req.user.username;
-    const user = req.user;
+
+    let followingList;
+
+    // User.findOne({ username }).then(user => {
+    //     followingList = user.following;
+    // });
 
     if (username !== currUser) {
         Story.find({ username })
             .sort([['updated_at', -1]])
             .then(stories => {
-                let userStories = {
-                    username,
-                    stories
-                };
-                res.render('protected/user', { userStories });
+                User.findOne({ username }).then(user => {
+                    followingList = user.following;
+
+                    let userStories = {
+                        username,
+                        stories,
+                        followingList
+                    };
+                    res.render('protected/user', { userStories });
+                });
             })
             .catch(console.error);
     } else {
@@ -127,11 +137,7 @@ router.post('/:id', (req, res) => {
 
 // following
 
-<<<<<<< HEAD
-router.get("/follow/:username", (req, response) => {
-=======
 router.get('/follow/:username', (req, res) => {
->>>>>>> de2f4d6b9f38673f404a1c68651d8918665dbdfa
     const username = req.params.username; //user we want to follow
     const id = req.user.id; // own id
 
@@ -142,26 +148,6 @@ router.get('/follow/:username', (req, res) => {
             // if it does NOT find user = -1
             if (res.following.indexOf(user.username) === -1) {
                 //push element from res.following and .save()
-<<<<<<< HEAD
-                User.findByIdAndUpdate(
-                    { _id: id },
-                    { $push: { following: user.username } },
-                    { new: true }
-                ).then(user => {
-                    console.log("USER:", user);
-                    response.send(user);
-                });
-            } else {
-                // remove element in res.following and .save()
-                User.findByIdAndUpdate(
-                    { _id: id },
-                    { $pull: { following: user.username } },
-                    { new: true }
-                ).then(user => {
-                    console.log("USER REMOVE:", user);
-                    response.send(user);
-                });
-=======
                 User.update({ _id: id }, { $push: { following: user.username } }, { new: true }).then(
                     user => {
                         console.log('USER:', user);
@@ -174,7 +160,6 @@ router.get('/follow/:username', (req, res) => {
                         console.log('USER REMOVE:', user);
                     }
                 );
->>>>>>> de2f4d6b9f38673f404a1c68651d8918665dbdfa
             }
         });
     });
