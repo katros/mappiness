@@ -72,15 +72,7 @@ a {
 .user-story-container {
   border: 2px solid red; }
 
-<<<<<<< HEAD
 .followbtn.active {
   font-size: 30px; }
-=======
-.followbtn__follow {
-  background-color: #00b7ff; }
-
-.followbtn__nofollow {
-  background-color: #ffffff; }
->>>>>>> de2f4d6b9f38673f404a1c68651d8918665dbdfa
 
 /*# sourceMappingURL=style.css.map */
