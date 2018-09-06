@@ -33,8 +33,9 @@
     <br> {{/each}}
 
     <ul>
-        {{#each userStories.followingList}}
-        <li>{{this}}</li>
+        {{#each userStories.followingList}} <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>
+
+
         {{/each}}
     </ul>
 </div>
