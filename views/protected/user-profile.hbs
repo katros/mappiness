@@ -1,6 +1,9 @@
 <div class="top-bar">
-    <a href="/auth/logout"><button>LOG OUT</button></a>
-    <a href="/protected/map"><button>GO BACK TO MAP</button></a>
+    <div class="logo"><span>felicitas</span></div>
+    <div class="btn-white-ghost"><a href="/protected/map">GO BACK TO MAP</a></div>
+    <a href="/auth/logout">
+        <svg class="profile-icons profile-icons__logout"><use xlink:href="/images/sprite.svg#icon-log-out"></use></svg>
+    </a>
 </div>
 
 <br>
@@ -10,28 +13,30 @@
 
     <br> {{#each customStories.stories}}
     <div class="user-story-container">
-        <p>{{this.story}}</p>
+        <p class="story-copy">{{this.story}}</p>
+        <div class="location">
 
-        {{#if this.address.street}}
-        <p>{{this.address.street}}</p>
-        {{/if}} {{#if this.address.city_district}}
-        <p>{{this.address.city_district}}</p>
-        {{/if}} {{#if this.address.town}}
-        <p>{{this.address.town}}</p>
-        {{/if}} {{#if this.address.city}}
-        <p>{{this.address.city}}</p>
-        {{/if}} {{#if this.address.county}}
-        <p>{{this.address.county}}</p>
-        {{/if}} {{#if this.address.country}}
-        <p>{{this.address.country}}</p>
-        {{/if}}
-        <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+            {{#if this.address.street}}
+            <p>{{this.address.street}}</p>
+            {{/if}} {{#if this.address.city_district}}
+            <p>{{this.address.city_district}}</p>
+            {{/if}} {{#if this.address.town}}
+            <p>{{this.address.town}}</p>
+            {{/if}} {{#if this.address.city}}
+            <p>{{this.address.city}}</p>
+            {{/if}} {{#if this.address.county}}
+            <p>{{this.address.county}}</p>
+            {{/if}} {{#if this.address.country}}
+            <p>{{this.address.country}}</p>
+            {{/if}}
+            <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+        </div>
 
         <div class="story-btn-container">
             <form action="/protected/{{this._id}}/delete" method='POST'>
-                <button type='submit'>DELETE</button>
+                <svg class="story-icon story-icon__delete"><use xlink:href="/images/sprite.svg#icon-trash-2"></use></svg>
             </form>
-            <a href="/protected/{{this._id}}/edit"><button>EDIT</button></a>
+            <a href="/protected/{{this._id}}/edit"><svg class="story-icon story-icon__edit"><use xlink:href="/images/sprite.svg#icon-edit"></use></svg></a>
         </div>
     </div>
     <br> {{/each}}

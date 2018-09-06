@@ -26,7 +26,6 @@ $(document).ready(function() {
         geocoder = L.Control.Geocoder.nominatim(),
         control = L.Control.geocoder({
             geocoder: geocoder,
-            // showResultIcons: true,
             defaultMarkGeocode: false
         })
             .on('markgeocode', function(e) {
@@ -67,14 +66,14 @@ $(document).ready(function() {
             let city_district = results[0].properties.address.city_district;
 
             let r = results[0];
-            console.log(results[0]);
+
             if (r) {
                 marker = L.marker(r.center, { icon: myIcon })
                     .bindPopup(r.name)
                     .addTo(map)
                     .setPopupContent(
-                        `<form action="/protected/create-story" method="POST" id="form-container">
-                        <textarea id="story" type="text" name="story" placeholder="Add your happy story..." style="width: 200px; height:50px;"></textarea>
+                        `<form action="/protected/create-story" method="POST" id="form-container" class="story-form">
+                        <textarea id="story" type="text" name="story" placeholder="One time in band camp..." required="true" style="width: 200px; height:100px;"></textarea>
                         <input type="hidden" id="lat" name="lat" value=${lat}>
                         <input type="hidden" id="lng" name="lng" value=${lng}>
                         <input type="hidden" id="street" name="street" value="${street}">
@@ -99,14 +98,12 @@ $(document).ready(function() {
 
     function start() {
         axios.get('/protected/stories').then(result => {
-            console.log(result);
             let user = result.data.user;
             let following = result.data.followingList;
             result.data.stories.forEach(story => {
                 let date = moment(story.created_at).format('lll');
-                let markerHtml = `<a href="/protected/user/${story.username}"><p>${
-                    story.username
-                }</p></a>
+                let markerHtml = `<a href="/protected/user/${story.username}">
+                <p>${story.username}</p></a>
                 <div class="display-story-container"><p>${story.story}</p>
                 <p>${story.address.street ? story.address.street : ''}</p>
                 <p>${story.address.city_district ? story.address.city_district : ''}</p>
@@ -117,26 +114,25 @@ $(document).ready(function() {
                 <p>${date}</p>
                 </div>`;
                 if (user === story.username) {
-                    console.log('YIS');
                     new L.marker([story.location.lat, story.location.lng], { icon: myIcon })
                         .bindPopup(markerHtml)
                         .addTo(map);
                 } else {
-                    console.log(following);
+                    new L.marker([story.location.lat, story.location.lng], { icon: othersIcon })
+                        .bindPopup(markerHtml)
+                        .addTo(map);
+                }
 
-                    const followingUser = following.find(e => story.username);
-
-                    if (followingUser) {
-                        new L.marker([story.location.lat, story.location.lng], {
-                            icon: followingIcon
-                        })
-                            .bindPopup(markerHtml)
-                            .addTo(map);
-                    } else {
-                        new L.marker([story.location.lat, story.location.lng], { icon: othersIcon })
-                            .bindPopup(markerHtml)
-                            .addTo(map);
-                    }
+                if (following) {
+                    following.forEach(e => {
+                        if (e === story.username) {
+                            new L.marker([story.location.lat, story.location.lng], {
+                                icon: followingIcon
+                            })
+                                .bindPopup(markerHtml)
+                                .addTo(map);
+                        }
+                    });
                 }
             });
         });
