@@ -8,9 +8,13 @@
 <div class="profile">
 
     <h1 id="username-title">{{userStories.username}}</h1>
+    <button class="follow">Follow</button>
 
-    <br> <button class="follow">Follow</button>
-    {{!-- <button class="trytofollow">TryToFollow</button> --}}
+    {{!-- #if userStories.isFollowing
+    <button class="follow" style="visibility: visible">Following</button>
+    <button class="follow" style="visibility: hidden">Follow</button>else <button class="follow" style="visibility: hidden">Following</button>
+    <button class="follow" style="visibility: visible">Follow</button> --}}
+
     <br>
     <br> {{#each userStories.stories}}
     <div class="user-story-container">

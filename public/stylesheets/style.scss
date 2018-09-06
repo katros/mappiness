@@ -17,6 +17,7 @@ body {
     font-weight: 100;
     background-color: #fffefc;
     color: #33322f;
+    overflow: hidden;
 }
 
 // a {
@@ -229,4 +230,9 @@ body {
         width: 100px;
         margin: 20px 0;
     }
+}
+
+.leaflet-control-container.leaflet-right.leaflet-control-geocoder {
+    position: fixed;
+    margin-top: 200px;
 }

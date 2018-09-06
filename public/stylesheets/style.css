@@ -14,7 +14,8 @@ body {
   font: 16px "Assistant", sans-serif;
   font-weight: 100;
   background-color: #fffefc;
-  color: #33322f; }
+  color: #33322f;
+  overflow: hidden; }
 
 .btn-white-ghost {
   margin-top: 20px;
@@ -184,5 +185,9 @@ body {
     text-align: center;
     width: 100px;
     margin: 20px 0; }
+
+.leaflet-control-container.leaflet-right.leaflet-control-geocoder {
+  position: fixed;
+  margin-top: 200px; }
 
 /*# sourceMappingURL=style.css.map */
