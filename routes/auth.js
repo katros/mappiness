@@ -103,7 +103,7 @@ authRoutes.get(
 
 authRoutes.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/');
+    res.redirect('/auth/login');
 });
 
 module.exports = authRoutes;
