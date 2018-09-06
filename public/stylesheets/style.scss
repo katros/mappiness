@@ -211,13 +211,22 @@ body {
     font-size: 30px;
 }
 
-//added to test
-// .leaflet-marker-icon {
-//     width: 50px !important;
-//     height: 50px !important;
-//     content: url(marker-black.svg);
-// }
-
-// .leaflet-marker-shadow {
-//     visibility: hidden;
-// }
+.story-form {
+    display: flex;
+    flex-direction: column;
+    & textarea {
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    & button {
+        background-color: #ffda75;
+        border: none;
+        border-radius: 10px;
+        color: #fffefc;
+        font-size: 18px;
+        text-align: center;
+        width: 100px;
+        margin: 20px 0;
+    }
+}
