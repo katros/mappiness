@@ -8,6 +8,7 @@ const hbs = require('hbs');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
+const config = require('./config');
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -16,7 +17,7 @@ const flash = require('connect-flash');
 mongoose.Promise = Promise;
 mongoose
     .connect(
-        'mongodb://localhost/mappiness',
+        config.MONGODB_URI,
         { useMongoClient: true }
     )
     .then(() => {

@@ -70,17 +70,27 @@ router.get("/user-profile", (req, res, next) => {
 router.get("/user/:username", (req, res, next) => {
     const username = req.params.username;
     const currUser = req.user.username;
-    const user = req.user;
+
+    let followingList;
+
+    // User.findOne({ username }).then(user => {
+    //     followingList = user.following;
+    // });
 
     if (username !== currUser) {
         Story.find({ username })
             .sort([["updated_at", -1]])
             .then(stories => {
-                let userStories = {
-                    username,
-                    stories
-                };
-                res.render("protected/user", { userStories });
+                User.findOne({ username }).then(user => {
+                    followingList = user.following;
+
+                    let userStories = {
+                        username,
+                        stories,
+                        followingList
+                    };
+                    res.render("protected/user", { userStories });
+                });
             })
             .catch(console.error);
     } else {
