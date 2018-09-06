@@ -13,14 +13,10 @@ font-family: 'Abril Fatface', cursive;
 }
 
 body {
-    font: 16px 'Assistant', sans-serif;
+    font: 16px "Assistant", sans-serif;
     font-weight: 100;
     background-color: #fffefc;
     color: #33322f;
-}
-
-h1 {
-    font-family: 'Abril Fatface', cursive;
 }
 
 a {
@@ -29,13 +25,13 @@ a {
 }
 
 .leaflet-container {
-    font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .map-container #map {
     height: 100vh;
     position: absolute;
-    top: 50px;
+    top: 60px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -43,12 +39,50 @@ a {
 }
 
 .top-bar {
-    height: 50px;
+    height: 60px;
     background-color: #ffda75;
     width: 100vw;
     z-index: 1000;
     position: fixed;
-    border-bottom: 5px solid #2f3133;
+    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.774);
+}
+
+.logo {
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 12px;
+
+    & span {
+        font-family: "Abril Fatface", cursive;
+        margin-left: 15px;
+        font-size: 30px;
+        color: #fffefc;
+        letter-spacing: 0.9px;
+    }
+}
+
+.profile-icons {
+    height: 33px;
+    width: 33px;
+    fill: #fffefc;
+    border: 2px solid #fffefc;
+    border-radius: 50%;
+    padding: 5px;
+    position: absolute;
+    top: 12px;
+    right: 50px;
+    display: inline-block;
+
+    transition: all 0.4s;
+
+    &__user {
+        margin-right: 60px;
+    }
+}
+
+.profile-icons:hover {
+    background-color: #fffefc;
+    fill: #ffda75;
 }
 
 .sidebar {
@@ -60,11 +94,12 @@ a {
     top: 0;
     left: 0;
     display: flex;
-    margin-top: 50px;
+    margin-top: 60px;
 
     transition: 0.7s;
 
     &__text {
+        margin-top: 60px;
         padding: 40px;
         flex-basis: 90%;
 
@@ -79,10 +114,13 @@ a {
         flex-basis: 10%;
         margin-top: 70px;
         font-size: 60px;
+        color: #ffda75;
         outline: none;
         width: 60px;
         height: 60px;
         cursor: pointer;
+        border: none;
+        background-color: transparent;
     }
 
     &.is-closed {
@@ -118,12 +156,12 @@ a {
 }
 
 //added to test
-.leaflet-marker-icon {
-    width: 50px !important;
-    height: 50px !important;
-    content: url(marker-black.svg);
-}
+// .leaflet-marker-icon {
+//     width: 50px !important;
+//     height: 50px !important;
+//     content: url(marker-black.svg);
+// }
 
-.leaflet-marker-shadow {
-    visibility: hidden;
-}
+// .leaflet-marker-shadow {
+//     visibility: hidden;
+// }
