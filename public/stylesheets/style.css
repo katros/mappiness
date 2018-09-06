@@ -1,12 +1,27 @@
+/*
+YELLOW: #ffda75
+WHITE: #fffefc
+BLUE: #66ACC1
+BLACK: #2F3133
+font-family: 'Assistant', sans-serif;
+font-family: 'Abril Fatface', cursive;
+*/
 * {
   margin: 0;
   box-sizing: border-box; }
 
 body {
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif; }
+  font: 16px 'Assistant', sans-serif;
+  font-weight: 100;
+  background-color: #fffefc;
+  color: #33322f; }
+
+h1 {
+  font-family: 'Abril Fatface', cursive; }
 
 a {
-  color: #00b7ff; }
+  color: #66acc1;
+  font-weight: 600; }
 
 .leaflet-container {
   font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif; }
@@ -22,14 +37,15 @@ a {
 
 .top-bar {
   height: 50px;
-  background-color: #00b7ff;
+  background-color: #ffda75;
   width: 100vw;
   z-index: 1000;
-  position: fixed; }
+  position: fixed;
+  border-bottom: 5px solid #2f3133; }
 
 .sidebar {
   z-index: 20;
-  background-color: #ffffff;
+  background-color: #fffefc;
   width: 400px;
   height: 100vh;
   position: absolute;
@@ -39,10 +55,12 @@ a {
   margin-top: 50px;
   transition: 0.7s; }
   .sidebar__text {
-    margin-top: 100px;
     padding: 40px;
-    flex-basis: 90%;
-    margin-top: 200px; }
+    flex-basis: 90%; }
+    .sidebar__text h2 {
+      color: #66acc1;
+      font-size: 200%;
+      font-weight: 300; }
   .sidebar__icon button {
     flex-basis: 10%;
     margin-top: 70px;
@@ -70,13 +88,17 @@ a {
   padding-top: 70px; }
 
 .user-story-container {
-  border: 2px solid red; }
+  border: 2px solid #fff; }
 
 .followbtn.active {
   font-size: 30px; }
 
 .leaflet-marker-icon {
-  width: 41px !important;
-  content: url(https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Marker-Outside-Pink.png); }
+  width: 50px !important;
+  height: 50px !important;
+  content: url(marker-black.svg); }
+
+.leaflet-marker-shadow {
+  visibility: hidden; }
 
 /*# sourceMappingURL=style.css.map */
