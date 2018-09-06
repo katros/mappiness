@@ -19,9 +19,25 @@ body {
     color: #33322f;
 }
 
-a {
-    color: #66acc1;
-    font-weight: 600;
+// a {
+//     color: #66acc1;
+//     font-weight: 600;
+// }
+
+.btn-white {
+    margin-top: 20px;
+    margin-right: 130px;
+    float: right;
+}
+
+.btn-white a {
+    text-decoration: none;
+    background-color: #fffefc;
+    color: #ffda75;
+    padding: 10px 30px;
+    font-weight: 700;
+    border-radius: 100px;
+    letter-spacing: 0.7px;
 }
 
 .leaflet-container {
@@ -44,7 +60,7 @@ a {
     width: 100vw;
     z-index: 1000;
     position: fixed;
-    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.774);
+    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
 }
 
 .logo {
