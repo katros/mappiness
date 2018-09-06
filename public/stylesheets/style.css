@@ -174,8 +174,7 @@ body {
   .story-form textarea {
     font-size: 14px;
     padding: 10px;
-    border-radius: 10px;
-    border: none; }
+    border-radius: 10px; }
   .story-form button {
     background-color: #ffda75;
     border: none;
