@@ -107,36 +107,36 @@ $(document).ready(function() {
                 let markerHtml = `<a href="/protected/user/${story.username}"><p>${
                     story.username
                 }</p></a>
-                                    <div class="display-story-container"><p>${story.story}</p>
-                                    <p>${story.address.street ? story.address.street : ''}</p>
-                                    <p>${
-                                        story.address.city_district ? story.address.city_district : ''
-                                    }</p>
-                                    <p>${story.address.town ? story.address.town : ''}</p>
-                                    <p>${story.address.city ? story.address.city : ''}</p>
-                                    <p>${story.address.county ? story.address.county : ''}</p>
-                                    <p>${story.address.country ? story.address.country : ''}</p
-                                    <p>${date}</p>
-                                    </div>`;
-
+                <div class="display-story-container"><p>${story.story}</p>
+                <p>${story.address.street ? story.address.street : ''}</p>
+                <p>${story.address.city_district ? story.address.city_district : ''}</p>
+                <p>${story.address.town ? story.address.town : ''}</p>
+                <p>${story.address.city ? story.address.city : ''}</p>
+                <p>${story.address.county ? story.address.county : ''}</p>
+                <p>${story.address.country ? story.address.country : ''}</p
+                <p>${date}</p>
+                </div>`;
                 if (user === story.username) {
+                    console.log('YIS');
                     new L.marker([story.location.lat, story.location.lng], { icon: myIcon })
                         .bindPopup(markerHtml)
                         .addTo(map);
                 } else {
-                    following.forEach(e => {
-                        if (e === story.username) {
-                            new L.marker([story.location.lat, story.location.lng], {
-                                icon: followingIcon
-                            })
-                                .bindPopup(markerHtml)
-                                .addTo(map);
-                        } else {
-                            new L.marker([story.location.lat, story.location.lng], { icon: othersIcon })
-                                .bindPopup(markerHtml)
-                                .addTo(map);
-                        }
-                    });
+                    console.log(following);
+
+                    const followingUser = following.find(e => story.username);
+
+                    if (followingUser) {
+                        new L.marker([story.location.lat, story.location.lng], {
+                            icon: followingIcon
+                        })
+                            .bindPopup(markerHtml)
+                            .addTo(map);
+                    } else {
+                        new L.marker([story.location.lat, story.location.lng], { icon: othersIcon })
+                            .bindPopup(markerHtml)
+                            .addTo(map);
+                    }
                 }
             });
         });
