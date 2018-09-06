@@ -12,15 +12,28 @@ $(document).ready(function() {
                 success: function(data, status) {
                     console.log("at ajax", data);
 
-                    // if it is NOT following = -1
+                    //if it is NOT following = -1
+
                     if (data.following.indexOf(username) === -1) {
                         $(".follow").addClass("active");
-                        $(".follow").text("Following");
+                        $(".follow").text("Follow");
                     } else {
                         $(".follow").removeClass("active");
-                        $(".follow").text("Follow");
+                        $(".follow").text("Following");
                     }
                 }
             });
         });
 });
+
+// $(".follow")
+//     .unbind("click")
+//     .bind("click", () => {
+//         if (data.following.indexOf(username) === -1) {
+//             $(".follow").addClass("active");
+//             $(".follow").text("Follow");
+//         } else {
+//             $(".follow").removeClass("active");
+//             $(".follow").text("Following");
+//         }
+//     });
