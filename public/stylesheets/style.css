@@ -11,17 +11,23 @@ font-family: 'Abril Fatface', cursive;
   box-sizing: border-box; }
 
 body {
-  font: 16px "Assistant", sans-serif;
+  font: 16px 'Assistant', sans-serif;
   font-weight: 100;
   background-color: #fffefc;
   color: #33322f; }
 
+<<<<<<< HEAD
+=======
+h1 {
+  font-family: 'Abril Fatface', cursive; }
+
+>>>>>>> e8b948d5e812fca18f2885b426c5385e886574cf
 a {
   color: #66acc1;
   font-weight: 600; }
 
 .leaflet-container {
-  font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif; }
 
 .map-container #map {
   height: 100vh;
@@ -123,13 +129,5 @@ a {
 
 .followbtn.active {
   font-size: 30px; }
-
-.leaflet-marker-icon {
-  width: 50px !important;
-  height: 50px !important;
-  content: url(marker-black.svg); }
-
-.leaflet-marker-shadow {
-  visibility: hidden; }
 
 /*# sourceMappingURL=style.css.map */
