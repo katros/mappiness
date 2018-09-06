@@ -24,20 +24,27 @@ body {
 //     font-weight: 600;
 // }
 
-.btn-white {
+.btn-white-ghost {
     margin-top: 20px;
     margin-right: 130px;
     float: right;
 }
 
-.btn-white a {
+.btn-white-ghost a {
     text-decoration: none;
+    border: 2px solid #fffefc;
+    color: #fffefc;
+    padding: 8px 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    letter-spacing: 0.7px;
+
+    transition: all 0.4s;
+}
+
+.btn-white-ghost a:hover {
     background-color: #fffefc;
     color: #ffda75;
-    padding: 10px 30px;
-    font-weight: 700;
-    border-radius: 100px;
-    letter-spacing: 0.7px;
 }
 
 .leaflet-container {
@@ -162,9 +169,42 @@ body {
 
 .profile {
     padding-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .user-story-container {
-    border: 2px solid #fff;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 40px 60px;
+    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+    width: 30%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.story-btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.story-copy {
+    word-wrap: break-word;
+}
+
+.story-icon {
+    height: 20px;
+    width: 20px;
+    fill: #ffda75;
+    margin-left: 10px;
+}
+
+.location,
+.date {
+    font-size: 12px;
+    display: inline-block;
+    color: #66acc1;
 }
 
 .followbtn.active {
