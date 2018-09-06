@@ -73,7 +73,7 @@ $(document).ready(function() {
                     .addTo(map)
                     .setPopupContent(
                         `<form action="/protected/create-story" method="POST" id="form-container" class="story-form">
-                        <textarea id="story" type="text" name="story" placeholder="One time in band camp..." style="width: 200px; height:100px;"></textarea>
+                        <textarea id="story" type="text" name="story" placeholder="One time in band camp..." required="true" style="width: 200px; height:100px;"></textarea>
                         <input type="hidden" id="lat" name="lat" value=${lat}>
                         <input type="hidden" id="lng" name="lng" value=${lng}>
                         <input type="hidden" id="street" name="street" value="${street}">
