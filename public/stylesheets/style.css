@@ -11,23 +11,17 @@ font-family: 'Abril Fatface', cursive;
   box-sizing: border-box; }
 
 body {
-  font: 16px 'Assistant', sans-serif;
+  font: 16px "Assistant", sans-serif;
   font-weight: 100;
   background-color: #fffefc;
   color: #33322f; }
 
-<<<<<<< HEAD
-=======
-h1 {
-  font-family: 'Abril Fatface', cursive; }
-
->>>>>>> e8b948d5e812fca18f2885b426c5385e886574cf
 a {
   color: #66acc1;
   font-weight: 600; }
 
 .leaflet-container {
-  font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+  font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
 
 .map-container #map {
   height: 100vh;
@@ -112,7 +106,7 @@ a {
 .sidebar-toggle {
   transform: rotate(0deg); }
   .sidebar-toggle.is-closed {
-    transform: translateX(80px); }
+    transform: translateX(60px); }
 
 .icon .is-closed {
   transform: rotate(180deg); }
