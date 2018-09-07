@@ -442,4 +442,33 @@ body {
   .footer p {
     color: #fffefc; }
 
+.popup-story {
+  word-wrap: break-word;
+  font-weight: 300;
+  margin: 15px 0;
+  font-size: 14px;
+  border: 1px solid #2f3133;
+  padding: 20px 15px;
+  border-radius: 10px; }
+
+.popup-address {
+  font-size: 12px;
+  display: inline-block;
+  color: #666;
+  line-height: 1.4;
+  font-size: 11px; }
+
+.leaflet-popup-content p {
+  margin: 0 !important; }
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  width: 250px; }
+
+.popup-username {
+  text-decoration: none; }
+
+.popup-username p {
+  color: #ffda75;
+  font-size: 18px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -103,9 +103,13 @@ $(document).ready(function() {
             let following = result.data.followingList;
             result.data.stories.forEach(story => {
                 let date = moment(story.created_at).format('lll');
-                let markerHtml = `<a href="/protected/user/${story.username}">
+                let markerHtml = ` 
+                <a class="popup-username" href="/protected/user/${story.username}">
                 <p>${story.username}</p></a>
-                <div class="display-story-container"><p>${story.story}</p>
+
+                <div class="display-story-container">
+                <div class="popup-story"><p>${story.story}</p></div>
+                <div class="popup-address">
                 <p>${story.address.street ? story.address.street : ''}</p>
                 <p>${story.address.city_district ? story.address.city_district : ''}</p>
                 <p>${story.address.town ? story.address.town : ''}</p>
@@ -113,6 +117,7 @@ $(document).ready(function() {
                 <p>${story.address.county ? story.address.county : ''}</p>
                 <p>${story.address.country ? story.address.country : ''}</p
                 <p>${date}</p>
+                <div>
                 </div>`;
                 if (user === story.username) {
                     new L.marker([story.location.lat, story.location.lng], { icon: myIcon })
