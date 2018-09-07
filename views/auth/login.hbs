@@ -1,25 +1,51 @@
-<h2>
-  Login</h2>
+<div class="login-wrapper">
 
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Email</label>
-  <input id="username" type="email" name="username" placeholder="Your email">
+  <div class="logo dark">
+    <img src="/images/logo-yellow.png" height="50px" alt="felicitas logo"><span>felicitas</span></div>
+  <div class="login-container">
 
-  <br><br>
+    <div class="signup">
+      <h2>
+        Log In</h2>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br> {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+      <form action="/auth/login" method="POST" id="form-container" class="signup__form">
 
-  <br><br>
+        <input id="username" type="email" name="username" placeholder="Your email">
 
-  <button>Login</button>
 
-</form>
-<a href="/auth/google"><button>Login with Google</button></a>
-<p class="account-message">
-  Don't have an account yet?
-  <a href="/auth/signup">Signup</a>
-</p>
+        <input id="password" type="password" name="password" placeholder="Your password">
+        <br> {{#if message }}
+        <div class="error-message">{{ message }}</div>
+        {{/if}}
+
+
+        <div class="signup__form-btn">
+          <button>Log In</button>
+        </div>
+
+      </form>
+
+      <div class="signup__form-btngoogle">
+        <a href="/auth/google"><button>Log in with Google</button></a>
+      </div>
+
+      <div class="signup__login">
+        <p class="account-message">
+          Don't have an account yet?
+          <a href="/auth/signup">Sign up</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<footer class="footer">
+
+  <span>felicitas</span>
+  </div>
+  <p>by Kaisa & Helene, 2018</p>
+</footer>

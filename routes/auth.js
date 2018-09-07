@@ -42,13 +42,13 @@ authRoutes.post("/signup", (req, res, next) => {
             email,
             password: hashPass
         });
-
         newUser
             .save()
             .then(user => {
                 const id = user._id;
 
                 req.login(user, err => {
+                    console.log(user);
                     if (err) throw err;
                     res.redirect(`/auth/username/${id}`);
                 });

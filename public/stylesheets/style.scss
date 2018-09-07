@@ -17,13 +17,186 @@ body {
     font-weight: 100;
     background-color: #fffefc;
     color: #33322f;
-    overflow: hidden;
+    // overflow: hidden;
+
+    input:focus {
+        outline: none;
+    }
+
+    button:focus {
+        outline: none;
+    }
 }
 
-// a {
-//     color: #66acc1;
-//     font-weight: 600;
-// }
+// SIGN UP
+
+.logo.dark {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    align-content: stretch;
+
+    &__left {
+        background-image: linear-gradient(rgba(51, 50, 47, 1), rgba(51, 50, 47, 0.2)),
+            url(map_overview.png);
+        background-position: center;
+        background-size: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 90%;
+        margin-right: 40px;
+        border-radius: 10px;
+        color: #fffefc;
+
+        & h2 {
+            font-size: 40px;
+            text-align: center;
+            padding-top: 40px;
+            color: #66acc1;
+        }
+        & p {
+            padding: 60px 60px 0 60px;
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 20px;
+        }
+
+        & span {
+            color: #ffda75;
+            font-weight: 700;
+        }
+    }
+
+    &__right {
+        margin-right: 50px;
+    }
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    padding: 30px 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+
+    & h2 {
+        color: #ffda75;
+        margin-bottom: 30px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    &__form {
+        font-size: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & input {
+            padding: 10px 20px;
+            border: none;
+            border-bottom: 2px solid #ffda75;
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        &-btn button {
+            margin: 20px 0;
+            font-size: 20px;
+            background-color: #ffda75;
+            border: 2px solid #ffda75;
+            color: #fffefc;
+            padding: 12px 30px;
+            font-weight: 700;
+            border-radius: 10px;
+            letter-spacing: 0.7px;
+            box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+
+            transition: all 0.4s;
+        }
+
+        &-btn button:hover {
+            background-color: #66acc1;
+            border: 2px solid #66acc1;
+        }
+
+        &-btngoogle button {
+            margin: 20px 0 30px 0;
+            font-size: 18px;
+            border: 2px solid #66acc1;
+            color: #66acc1;
+            background-color: #fffefc;
+            padding: 12px 20px;
+            font-weight: 700;
+            border-radius: 10px;
+            letter-spacing: 0.7px;
+            box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+
+            transition: all 0.4s;
+        }
+
+        &-btngoogle button:hover {
+            background-color: #66acc1;
+            color: #fffefc;
+        }
+    }
+
+    &__login {
+        & p {
+            font-size: 14px;
+        }
+
+        & a {
+            color: #ffda75;
+            font-weight: 700;
+            letter-spacing: 0.7px;
+            padding: 2px 5px;
+            text-decoration: none;
+            margin-left: 10px;
+            border-bottom: 1px solid #ffda75;
+        }
+
+        & a:hover {
+            background-color: #ffda75;
+            color: #fffefc;
+            border-radius: 2px;
+        }
+    }
+}
+
+// LOG IN
+.login-wrapper {
+    // background-image: linear-gradient(rgba(51, 50, 47, 1), rgba(51, 50, 47, 0.2)), url(map_overview.png);
+    // background-position: center;
+    // background-size: 100%;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // width: 100%;
+}
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// USERNAME
+
+.name-container {
+    margin-top: 50px;
+    width: 450px;
+}
+
+// ---------------
 
 .btn-white-ghost {
     margin-top: 20px;
@@ -83,6 +256,10 @@ body {
         color: #fffefc;
         letter-spacing: 0.9px;
     }
+}
+.logo.dark span {
+    color: #33322f !important;
+    font-size: 40px;
 }
 
 .profile-icons {
@@ -215,9 +392,11 @@ body {
 .story-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     & textarea {
         font-size: 14px;
-        padding: 10px;
+        padding: 20px 15px;
         border-radius: 10px;
     }
     & button {
@@ -227,8 +406,10 @@ body {
         color: #fffefc;
         font-size: 18px;
         text-align: center;
-        width: 100px;
+        width: 150px;
         margin: 20px 0;
+        padding: 10px;
+        font-weight: 700;
     }
 }
 
@@ -241,3 +422,24 @@ body {
 //     padding-top: 100px !important;
 //     position: fixed !important;
 // }
+
+.footer {
+    background-color: #33322f;
+    padding: 20px;
+    position: absolute;
+    bottom: -180px;
+    width: 100%;
+    text-align: center;
+
+    & span {
+        font-family: "Abril Fatface", cursive;
+        font-size: 40px;
+        color: #fffefc;
+        letter-spacing: 0.9px;
+        margin-bottom: 20px;
+    }
+
+    & p {
+        color: #fffefc;
+    }
+}

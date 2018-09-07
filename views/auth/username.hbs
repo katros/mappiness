@@ -1,15 +1,29 @@
-<h2>Pick your username</h2>
+<div class="logo dark">
+    <img src="/images/logo-yellow.png" height="50px" alt="felicitas logo"><span>felicitas</span></div>
+<div class="login-container">
+    <div class="signup name-container">
+        <h2>Pick your username</h2>
 
-<form action="/auth/username/{{user}}" method="POST" id="form-container">
-    <label for="username">User name</label>
-    <input id="username" type="text" name="username" placeholder="your user name">
+        <form action="/auth/username/{{user}}" method="POST" id="form-container" class="signup__form username-form">
+            <input id="username" type="text" name="username" placeholder="Your user name">
 
-    <br><br>
-    <br> {{#if message }}
-    <div class="error-message">{{ message }}</div>
-    {{/if}}
+            <br><br>
+            <br> {{#if message }}
+            <div class="error-message">{{ message }}</div>
+            {{/if}}
 
-    <br><br>
+            <div class="signup__form-btn">
+                <button>Set username</button>
 
-    <button>Set username</button>
-</form>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+
+    <span>felicitas</span>
+    </div>
+    <p>by Kaisa & Helene, 2018</p>
+</footer>

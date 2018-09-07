@@ -1,4 +1,5 @@
 <div class="top-bar">
+    <div class="logo"><img src="/images/logo-white.png" height="25px" alt="felicitas logo"><span>felicitas</span></div>
     <a href="/auth/logout"><button>LOG OUT</button></a>
     <a href="/protected/map"><button>GO BACK TO MAP</button></a>
     <a href="/protected/user-profile"><button>USER PROFILE</button></a>
@@ -6,11 +7,14 @@
 
 <br>
 <div class="profile">
-
+    <script>console.log({{{ isFollowing }}})</script>
     <h1 id="username-title">{{userStories.username}}</h1>
+    <h1>{{isFollowing}}</h1>
+    {{#if isFollowing}}
+    <button class="follow">Following</button>
+    {{else}}
     <button class="follow">Follow</button>
-
-    {{!-- #if userStories.isFollowing
+    {{/if}} {{!-- #if userStories.isFollowing
     <button class="follow" style="visibility: visible">Following</button>
     <button class="follow" style="visibility: hidden">Follow</button>else <button class="follow" style="visibility: hidden">Following</button>
     <button class="follow" style="visibility: visible">Follow</button> --}}
@@ -35,15 +39,21 @@
         {{/if}}
         <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
     </div>
-    <br> {{/each}}
-
+    <br> {{/each}} {{#if isOwn}}
     <ul>
         {{#each userStories.followingList}} <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>
 
 
         {{/each}}
     </ul>
+    {{/if}}
 </div>
 
+<footer class="footer">
+
+    <span>felicitas</span>
+    </div>
+    <p>by Kaisa & Helene, 2018</p>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src='/javascripts/follow.js'></script>
