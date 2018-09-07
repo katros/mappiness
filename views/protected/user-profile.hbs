@@ -12,7 +12,7 @@
     <div class="side-panel">
         <h1>{{customStories.user.username}}</h1>
         <div class="btn-yellow-cta"><a href="/protected/map">ADD A NEW STORY</a></div>
-        <h4>YOU ARE FOLLOWING:</h4>
+        <h4>You are following:</h4>
         <ul>
             {{#each customStories.user.following }}
             <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>

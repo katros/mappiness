@@ -23,7 +23,6 @@ $(document).ready(function() {
         });
     });
 });
-
 // $(".follow")
 //     .unbind("click")
 //     .bind("click", () => {

@@ -219,7 +219,7 @@ body {
 }
 
 .leaflet-container {
-    font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font: 100px/1.5 "Assistant", sans-serif;
 }
 
 .map-container #map {
@@ -287,7 +287,7 @@ body {
     z-index: 20;
     background-color: #fffefc;
     width: 400px;
-    height: 100vh;
+    height: 90vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -297,13 +297,18 @@ body {
     transition: 0.7s;
 
     &__text {
-        margin-top: 60px;
-        padding: 40px;
-        flex-basis: 90%;
+        padding: 40px 0 40px 40px;
 
         & h2 {
             color: #66acc1;
-            font-size: 200%;
+            font-size: 230%;
+            font-weight: 300;
+            margin: 30px 0;
+        }
+
+        & p {
+            line-height: 1.5;
+            font-size: 20px;
             font-weight: 300;
         }
     }
@@ -529,7 +534,8 @@ body {
     background-color: #33322f;
     padding: 20px;
     position: absolute;
-    bottom: -180px;
+    // bottom: -180px;
+    bottom: -112px;
     width: 100%;
     text-align: center;
 
