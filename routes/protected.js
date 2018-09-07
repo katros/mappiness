@@ -86,7 +86,7 @@ router.get("/user/:username", (req, res, next) => {
             .sort([["updated_at", -1]])
             .then(stories => {
                 User.findOne({ username }).then(user => {
-                    followingList = req.user.following;
+                    followingList = user.following; // req.user.following;
                     let isFollowing = false;
                     if (followingList.includes(username)) {
                         isFollowing = true;
