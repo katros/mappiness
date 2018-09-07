@@ -11,7 +11,7 @@ font-family: 'Abril Fatface', cursive;
   box-sizing: border-box; }
 
 body {
-  font: 16px "Assistant", sans-serif;
+  font: 16px 'Assistant', sans-serif;
   font-weight: 100;
   background-color: #fffefc;
   color: #33322f; }
@@ -159,7 +159,7 @@ body {
   color: #ffda75; }
 
 .leaflet-container {
-  font: 100px/1.5 "Assistant", sans-serif; }
+  font: 100px/1.5 'Assistant', sans-serif; }
 
 .map-container #map {
   height: 90vh;
@@ -183,7 +183,7 @@ body {
   margin-left: 30px;
   margin-top: 12px; }
   .logo span {
-    font-family: "Abril Fatface", cursive;
+    font-family: 'Abril Fatface', cursive;
     margin-left: 15px;
     font-size: 30px;
     color: #fffefc;
@@ -434,7 +434,7 @@ body {
   width: 100%;
   text-align: center; }
   .footer span {
-    font-family: "Abril Fatface", cursive;
+    font-family: 'Abril Fatface', cursive;
     font-size: 40px;
     color: #fffefc;
     letter-spacing: 0.9px;
