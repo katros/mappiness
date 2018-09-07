@@ -47,7 +47,6 @@ $(document).ready(function() {
     L.tileLayer(
         'https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0',
         {
-            // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             minZoom: 2
         }
     ).addTo(map);
