@@ -3,7 +3,6 @@ $(document).ready(function() {
     let username = $("#username-title").html();
     $(".follow").on("click", () => {
         $.ajax({
-            // AJAX
             url: `/protected/follow/${username}`,
             type: "GET",
             dataType: "json",
@@ -23,14 +22,3 @@ $(document).ready(function() {
         });
     });
 });
-// $(".follow")
-//     .unbind("click")
-//     .bind("click", () => {
-//         if (data.following.indexOf(username) === -1) {
-//             $(".follow").addClass("active");
-//             $(".follow").text("Follow");
-//         } else {
-//             $(".follow").removeClass("active");
-//             $(".follow").text("Following");
-//         }
-//     });

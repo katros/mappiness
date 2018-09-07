@@ -58,7 +58,6 @@ router.get("/stories", (req, res) => {
 //logged user profile page
 
 router.get("/user-profile", (req, res, next) => {
-    // let username = req.user.username;
     let user = req.user;
     let username = req.user.username;
     Story.find({ username })
@@ -150,8 +149,8 @@ router.post("/:id", (req, res) => {
 // following
 
 router.get("/follow/:username", (req, response) => {
-    const username = req.params.username; //user we want to follow
-    const id = req.user.id; // own id
+    const username = req.params.username;
+    const id = req.user.id;
 
     User.findOne({ username }).then(user => {
         User.findOne({ _id: id }, (err, res) => {
@@ -159,7 +158,6 @@ router.get("/follow/:username", (req, response) => {
 
             // if it does NOT find user = -1
             if (res.following.indexOf(user.username) === -1) {
-                //push element from res.following and .save()
                 User.findByIdAndUpdate(
                     { _id: id },
                     { $push: { following: user.username } },
@@ -168,7 +166,6 @@ router.get("/follow/:username", (req, response) => {
                     response.send(user);
                 });
             } else {
-                // remove element in res.following and .save()
                 User.findByIdAndUpdate(
                     { _id: id },
                     { $pull: { following: user.username } },

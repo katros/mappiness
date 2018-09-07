@@ -48,7 +48,6 @@ authRoutes.post("/signup", (req, res, next) => {
                 const id = user._id;
 
                 req.login(user, err => {
-                    console.log(user);
                     if (err) throw err;
                     res.redirect(`/auth/username/${id}`);
                 });
