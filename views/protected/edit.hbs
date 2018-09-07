@@ -1,10 +1,29 @@
-<div class="container">
-    <div class="card">
-        <h2>EDIT YOUR STORY</h2>
+<div class="top-bar">
+    <div class="logo"><img src="/images/logo-white.png" height="25px" alt="felicitas logo"><span>felicitas</span></div>
+    <div class="btn-white-ghost btn-user"><a href="/protected/map">GO BACK TO MAP</a></div>
+    <a href="/protected/user-profile">
+        <svg class="profile-icons profile-icons__user"><use xlink:href="/images/sprite.svg#icon-user"></use></svg>
+    </a>
+    <a href="/auth/logout">
+        <svg class="profile-icons profile-icons__logout"><use xlink:href="/images/sprite.svg#icon-log-out"></use></svg>
+    </a>
+</div>
+
+<div class="story-edit-wrapper">
+
+    <div class="story-edit-container">
         <form action="/protected/{{story._id}}" method='POST'>
             <textarea type="text" id='story' name='story'>{{story.story}}</textarea>
             <br>
-            <button type='submit'>UPDATE</button>
+            <button class="btn-blue-follow" type='submit'>UPDATE</button>
         </form>
     </div>
 </div>
+
+
+<footer class="footer">
+
+    <span>felicitas</span>
+    </div>
+    <p>by Kasia & Helene, 2018</p>
+</footer>

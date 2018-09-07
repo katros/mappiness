@@ -1,49 +1,70 @@
 <div class="top-bar">
-    <a href="/auth/logout"><button>LOG OUT</button></a>
-    <a href="/protected/map"><button>GO BACK TO MAP</button></a>
-    <a href="/protected/user-profile"><button>USER PROFILE</button></a>
+    <div class="logo"><img src="/images/logo-white.png" height="25px" alt="felicitas logo"><span>felicitas</span></div>
+    <div class="btn-white-ghost btn-user"><a href="/protected/map">GO BACK TO MAP</a></div>
+    <a href="/protected/user-profile">
+        <svg class="profile-icons profile-icons__user"><use xlink:href="/images/sprite.svg#icon-user"></use></svg>
+    </a>
+    <a href="/auth/logout">
+        <svg class="profile-icons profile-icons__logout"><use xlink:href="/images/sprite.svg#icon-log-out"></use></svg>
+    </a>
 </div>
 
 <br>
 <div class="profile">
+    <div class="side-panel">
 
-    <h1 id="username-title">{{userStories.username}}</h1>
-    <button class="follow">Follow</button>
+        <h1 id="username-title">{{userStories.username}}</h1>
+        <button class="follow btn-blue-follow">Follow</button>
+        <h4>Is following:</h4>
+        <ul>
+            {{#each userStories.followingList}}
+            <a href="/protected/user/{{this.this}}">
+                <li>{{this}}</li></a>
+            {{/each}}
+        </ul>
+
+    </div>
+
 
     {{!-- #if userStories.isFollowing
     <button class="follow" style="visibility: visible">Following</button>
     <button class="follow" style="visibility: hidden">Follow</button>else <button class="follow" style="visibility: hidden">Following</button>
     <button class="follow" style="visibility: visible">Follow</button> --}}
+    <div class="stories">
 
-    <br>
-    <br> {{#each userStories.stories}}
-    <div class="user-story-container">
-        <p>{{this.story}}</p>
 
-        {{#if this.address.street}}
-        <p>{{this.address.street}}</p>
-        {{/if}} {{#if this.address.city_district}}
-        <p>{{this.address.city_district}}</p>
-        {{/if}} {{#if this.address.town}}
-        <p>{{this.address.town}}</p>
-        {{/if}} {{#if this.address.city}}
-        <p>{{this.address.city}}</p>
-        {{/if}} {{#if this.address.county}}
-        <p>{{this.address.county}}</p>
-        {{/if}} {{#if this.address.country}}
-        <p>{{this.address.country}}</p>
-        {{/if}}
-        <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+        <br>
+        <br> {{#each userStories.stories}}
+        <div class="user-story-container">
+            <p class="story-copy">{{this.story}}</p>
+            <div class="location">
+                {{#if this.address.street}}
+                <p>{{this.address.street}}</p>
+                {{/if}} {{#if this.address.city_district}}
+                <p>{{this.address.city_district}}</p>
+                {{/if}} {{#if this.address.town}}
+                <p>{{this.address.town}}</p>
+                {{/if}} {{#if this.address.city}}
+                <p>{{this.address.city}}</p>
+                {{/if}} {{#if this.address.county}}
+                <p>{{this.address.county}}</p>
+                {{/if}} {{#if this.address.country}}
+                <p>{{this.address.country}}</p>
+                {{/if}}
+                <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+            </div>
+        </div>
+        <br> {{/each}}
     </div>
-    <br> {{/each}}
-
-    <ul>
-        {{#each userStories.followingList}} <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>
 
 
-        {{/each}}
-    </ul>
 </div>
 
+<footer class="footer">
+
+    <span>felicitas</span>
+    </div>
+    <p>by Kasia & Helene, 2018</p>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src='/javascripts/follow.js'></script>

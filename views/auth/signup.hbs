@@ -1,25 +1,67 @@
 <!-- views/auth/signup.hbs -->
-<h2>Signup</h2>
+<div class="logo dark"><img src="/images/logo-yellow.png" height="50px" alt="felicitas logo"><span>felicitas</span></div>
+<div class="signup-container">
+  <div class="signup-container__left">
+    <h2>The world is your happy place</h2>
+    <p>Join the global community of happy creatures. <br> Share your happy, beautiful, positive, cheering, amusing, romantic,
+      incredible, beloved, heartwarming, stories in the place, where they happened. Get inspired, surprised, touched, motivated
+      by other people’s experiences in places all over the world. Whether it’s your home town you to get to know from a new,
+      happy perspective, or an undiscovered place that you didn’t know has so much happiness ready for you… <br>
+      <span>Be happy, join happy.</span>
+    </p>
 
-<form action="/auth/signup" method="POST" id="form-container">
+  </div>
 
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email" placeholder="your email" required="true">
+  <div class="signup-container__right">
+    <div class="signup">
 
-  <br><br>
+      <h2>Sign up</h2>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password" required="true">
-  <br> {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+      <form action="/auth/signup" method="POST" id="form-container" class="signup__form">
 
-  <br><br>
+        {{!--
+        <div class="signup__form-email"> --}}
 
-  <button>Create account</button>
-</form>
-<a href="/auth/google"><button>Signup with Google</button></a>
-<p class="account-message">
-  Do you already have an account?
-  <a href="/auth/login">Login</a>
-</p>
+          <input id="email" type="email" name="email" placeholder="Your email" required="true"> {{!-- <div class="signup__form-pw">
+            --}}
+            <input id="password" type="password" name="password" placeholder="Your password" required="true">
+
+
+
+            <br> {{#if message }}
+            <div class="error-message">{{ message }}</div>
+            {{/if}}
+
+
+            <div class="signup__form-btn">
+              <button>Create account</button>
+            </div>
+      </form>
+
+      <div class="signup__form-btngoogle">
+        <a href="/auth/google"><button>Sign up with Google</button></a>
+      </div>
+
+      <div class="signup__login">
+
+        <p class="account-message">
+          Do you already have an account?
+          <a href="/auth/login">Log in</a>
+        </p>
+      </div>
+
+      </div>
+      </div>
+
+    </div>
+
+
+
+
+
+    <footer class="footer">
+
+      <span>felicitas</span>
+  </div>
+  <p>by Kasia & Helene, 2018</p>
+  </footer>

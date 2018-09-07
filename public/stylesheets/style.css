@@ -14,13 +14,135 @@ body {
   font: 16px "Assistant", sans-serif;
   font-weight: 100;
   background-color: #fffefc;
-  color: #33322f;
-  overflow: hidden; }
+  color: #33322f; }
+  body input:focus {
+    outline: none; }
+  body button:focus {
+    outline: none; }
+
+.logo.dark {
+  margin-top: 20px;
+  display: flex;
+  align-items: center; }
+
+.signup-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  align-content: stretch; }
+  .signup-container__left {
+    background-image: linear-gradient(#33322f, rgba(51, 50, 47, 0.2)), url(map_overview.png);
+    background-position: center;
+    background-size: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 90%;
+    margin-right: 40px;
+    border-radius: 10px;
+    color: #fffefc; }
+    .signup-container__left h2 {
+      font-size: 40px;
+      text-align: center;
+      padding-top: 40px;
+      color: #66acc1; }
+    .signup-container__left p {
+      padding: 60px 60px 0 60px;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 20px; }
+    .signup-container__left span {
+      color: #ffda75;
+      font-weight: 700; }
+  .signup-container__right {
+    margin-right: 50px; }
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding: 30px 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5); }
+  .signup h2 {
+    color: #ffda75;
+    margin-bottom: 30px;
+    font-size: 40px;
+    text-align: center; }
+  .signup__form {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .signup__form input {
+      padding: 10px 20px;
+      border: none;
+      border-bottom: 2px solid #ffda75;
+      font-size: 18px;
+      margin-bottom: 30px;
+      text-align: center; }
+    .signup__form-btn button {
+      margin: 20px 0;
+      font-size: 20px;
+      background-color: #ffda75;
+      border: 2px solid #ffda75;
+      color: #fffefc;
+      padding: 12px 30px;
+      font-weight: 700;
+      border-radius: 10px;
+      letter-spacing: 0.7px;
+      box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+      transition: all 0.4s; }
+    .signup__form-btn button:hover {
+      background-color: #66acc1;
+      border: 2px solid #66acc1; }
+    .signup__form-btngoogle button {
+      margin: 20px 0 30px 0;
+      font-size: 18px;
+      border: 2px solid #66acc1;
+      color: #66acc1;
+      background-color: #fffefc;
+      padding: 12px 20px;
+      font-weight: 700;
+      border-radius: 10px;
+      letter-spacing: 0.7px;
+      box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+      transition: all 0.4s; }
+    .signup__form-btngoogle button:hover {
+      background-color: #66acc1;
+      color: #fffefc; }
+  .signup__login p {
+    font-size: 14px; }
+  .signup__login a {
+    color: #ffda75;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    padding: 2px 5px;
+    text-decoration: none;
+    margin-left: 10px;
+    border-bottom: 1px solid #ffda75; }
+  .signup__login a:hover {
+    background-color: #ffda75;
+    color: #fffefc;
+    border-radius: 2px; }
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.name-container {
+  margin-top: 50px;
+  width: 450px; }
 
 .btn-white-ghost {
   margin-top: 20px;
   margin-right: 130px;
   float: right; }
+
+.btn-user {
+  margin-right: 180px; }
 
 .btn-white-ghost a {
   text-decoration: none;
@@ -37,10 +159,10 @@ body {
   color: #ffda75; }
 
 .leaflet-container {
-  font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; }
+  font: 100px/1.5 "Assistant", sans-serif; }
 
 .map-container #map {
-  height: 100vh;
+  height: 90vh;
   position: absolute;
   top: 60px;
   right: 0;
@@ -67,6 +189,10 @@ body {
     color: #fffefc;
     letter-spacing: 0.9px; }
 
+.logo.dark span {
+  color: #33322f !important;
+  font-size: 40px; }
+
 .profile-icons {
   height: 33px;
   width: 33px;
@@ -90,7 +216,7 @@ body {
   z-index: 20;
   background-color: #fffefc;
   width: 400px;
-  height: 100vh;
+  height: 90vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -98,12 +224,15 @@ body {
   margin-top: 60px;
   transition: 0.7s; }
   .sidebar__text {
-    margin-top: 60px;
-    padding: 40px;
-    flex-basis: 90%; }
+    padding: 40px 0 40px 40px; }
     .sidebar__text h2 {
       color: #66acc1;
-      font-size: 200%;
+      font-size: 230%;
+      font-weight: 300;
+      margin: 30px 0; }
+    .sidebar__text p {
+      line-height: 1.5;
+      font-size: 20px;
       font-weight: 300; }
   .sidebar__icon button {
     flex-basis: 10%;
@@ -129,19 +258,18 @@ body {
 
 .leaflet-left .leaflet-control {
   margin-left: 70px !important;
-  margin-top: 70px !important; }
+  margin-top: 10px !important; }
 
 .profile {
   padding-top: 70px;
-  display: flex;
-  flex-wrap: wrap; }
+  display: flex; }
 
 .user-story-container {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 40px 60px;
   box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
-  width: 30%;
+  width: 40%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -152,13 +280,19 @@ body {
   justify-content: flex-end; }
 
 .story-copy {
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  font-weight: 300;
+  padding-bottom: 10px; }
 
 .story-icon {
   height: 20px;
   width: 20px;
   fill: #ffda75;
-  margin-left: 10px; }
+  margin-left: 10px;
+  transition: all 0.3s; }
+
+.story-icon:hover {
+  fill: #f8c948; }
 
 .location,
 .date {
@@ -171,10 +305,11 @@ body {
 
 .story-form {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: center; }
   .story-form textarea {
     font-size: 14px;
-    padding: 10px;
+    padding: 20px 15px;
     border-radius: 10px; }
   .story-form button {
     background-color: #ffda75;
@@ -183,15 +318,157 @@ body {
     color: #fffefc;
     font-size: 18px;
     text-align: center;
-    width: 100px;
-    margin: 20px 0; }
+    width: 150px;
+    margin: 20px 0;
+    padding: 10px;
+    font-weight: 700; }
 
 .leaflet-interactive {
   stroke: #636363;
   fill: #636363; }
 
-.leaflet-touch .leaflet-control-geocoder {
-  padding-top: 100px !important;
-  position: fixed !important; }
+.btn-delete {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none; }
+
+.story-edit-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.story-edit-container form {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+  width: 600px; }
+
+.story-edit-container textarea {
+  background-color: #ffffff;
+  height: 200px;
+  width: 400px;
+  border-radius: 10px;
+  padding: 40px 60px;
+  overflow: hidden;
+  margin-top: 70px;
+  border: none;
+  border: 2px solid #f8c948;
+  overflow: auto;
+  outline: none;
+  font-size: 13px; }
+
+.btn-blue-follow {
+  margin: 30px 0 60px 0;
+  font-size: 16px;
+  text-decoration: none;
+  border: 2px solid #66acc1;
+  color: #fffefc;
+  background-color: #66acc1;
+  padding: 8px 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  letter-spacing: 0.7px;
+  transition: all 0.4s; }
+
+.btn-blue-follow:hover {
+  background-color: #fffefc;
+  color: #66acc1; }
+
+.btn-yellow-cta {
+  margin: 40px 0 60px 0; }
+
+.btn-yellow-cta a {
+  text-decoration: none;
+  border: 2px solid #ffda75;
+  color: #fffefc;
+  background-color: #ffda75;
+  padding: 8px 15px;
+  font-weight: 700;
+  border-radius: 10px;
+  letter-spacing: 0.7px;
+  transition: all 0.4s; }
+
+.btn-yellow-cta a:hover {
+  background-color: #fffefc;
+  color: #ffda75; }
+
+.profile .stories {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap; }
+
+.profile .side-panel {
+  width: 15%;
+  margin: 50px 40px 50px 50px;
+  border-right: 1px solid #2f3133; }
+
+.side-panel ul {
+  list-style-type: none;
+  padding: 0; }
+
+.side-panel ul a {
+  list-style-type: none;
+  color: #66acc1;
+  text-decoration: none;
+  font-weight: 300;
+  transition: all 0.3s; }
+
+.side-panel h4 {
+  color: #66acc1;
+  margin-bottom: 5px;
+  font-weight: 600; }
+
+.side-panel ul a:hover {
+  color: #128cb1; }
+
+.footer {
+  background-color: #33322f;
+  padding: 20px;
+  position: absolute;
+  bottom: -112px;
+  width: 100%;
+  text-align: center; }
+  .footer span {
+    font-family: "Abril Fatface", cursive;
+    font-size: 40px;
+    color: #fffefc;
+    letter-spacing: 0.9px;
+    margin-bottom: 20px; }
+  .footer p {
+    color: #fffefc; }
+
+.popup-story {
+  word-wrap: break-word;
+  font-weight: 300;
+  margin: 15px 0;
+  font-size: 14px;
+  border: 1px solid #2f3133;
+  padding: 20px 15px;
+  border-radius: 10px; }
+
+.popup-address {
+  font-size: 12px;
+  display: inline-block;
+  color: #666;
+  line-height: 1.4;
+  font-size: 11px; }
+
+.leaflet-popup-content p {
+  margin: 0 !important; }
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  width: 250px; }
+
+.popup-username {
+  text-decoration: none; }
+
+.popup-username p {
+  color: #ffda75;
+  font-size: 18px; }
 
 /*# sourceMappingURL=style.css.map */

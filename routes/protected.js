@@ -86,39 +86,22 @@ router.get("/user/:username", (req, res, next) => {
             .sort([["updated_at", -1]])
             .then(stories => {
                 User.findOne({ username }).then(user => {
-                    followingList = user.following;
+                    followingList = user.following; // req.user.following;
                     let isFollowing = false;
-                    console.log(
-                        req.user.username,
-                        " is following",
-                        req.user.following,
-                        " and next user is maybe on the array:",
-                        username,
-                        ". Is following a type Array? :",
-
-                        Array.isArray(user.following),
-                        "the user we want to follow:",
-
-                        user.following.indexOf(username),
-                        "the user we are making up:",
-
-                        followingList.indexOf("ana")
-                    );
-                    if (followingList.indexOf(username) === -1) {
-                        console.log("is not following");
-                        isFollowing = false;
-                    } else {
-                        console.log("is following");
+                    if (followingList.includes(username)) {
                         isFollowing = true;
                     }
                     let userStories = {
                         username,
                         stories,
-                        followingList,
-                        isFollowing
+                        followingList
                     };
-                    console.log(isFollowing);
-                    res.render("protected/user", { userStories });
+
+                    res.render("protected/user", {
+                        userStories,
+                        isOwn: username === currUser,
+                        isFollowing: isFollowing ? true : undefined
+                    });
                 });
             })
             .catch(console.error);
