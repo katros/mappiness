@@ -13,11 +13,10 @@ font-family: 'Abril Fatface', cursive;
 }
 
 body {
-    font: 16px "Assistant", sans-serif;
+    font: 16px 'Assistant', sans-serif;
     font-weight: 100;
     background-color: #fffefc;
     color: #33322f;
-    // overflow: hidden;
 
     input:focus {
         outline: none;
@@ -219,7 +218,7 @@ body {
 }
 
 .leaflet-container {
-    font: 100px/1.5 "Assistant", sans-serif;
+    font: 100px/1.5 'Assistant', sans-serif;
 }
 
 .map-container #map {
@@ -247,7 +246,7 @@ body {
     margin-top: 12px;
 
     & span {
-        font-family: "Abril Fatface", cursive;
+        font-family: 'Abril Fatface', cursive;
         margin-left: 15px;
         font-size: 30px;
         color: #fffefc;
@@ -540,7 +539,7 @@ body {
     text-align: center;
 
     & span {
-        font-family: "Abril Fatface", cursive;
+        font-family: 'Abril Fatface', cursive;
         font-size: 40px;
         color: #fffefc;
         letter-spacing: 0.9px;

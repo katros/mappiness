@@ -1,4 +1,3 @@
-<!-- views/auth/signup.hbs -->
 <div class="logo dark"><img src="/images/logo-yellow.png" height="50px" alt="felicitas logo"><span>felicitas</span></div>
 <div class="signup-container">
   <div class="signup-container__left">
@@ -19,23 +18,21 @@
 
       <form action="/auth/signup" method="POST" id="form-container" class="signup__form">
 
-        {{!--
-        <div class="signup__form-email"> --}}
 
-          <input id="email" type="email" name="email" placeholder="Your email" required="true"> {{!-- <div class="signup__form-pw">
-            --}}
-            <input id="password" type="password" name="password" placeholder="Your password" required="true">
+
+        <input id="email" type="email" name="email" placeholder="Your email" required="true">
+        <input id="password" type="password" name="password" placeholder="Your password" required="true">
 
 
 
-            <br> {{#if message }}
-            <div class="error-message">{{ message }}</div>
-            {{/if}}
+        <br> {{#if message }}
+        <div class="error-message">{{ message }}</div>
+        {{/if}}
 
 
-            <div class="signup__form-btn">
-              <button>Create account</button>
-            </div>
+        <div class="signup__form-btn">
+          <button>Create account</button>
+        </div>
       </form>
 
       <div class="signup__form-btngoogle">
@@ -50,18 +47,7 @@
         </p>
       </div>
 
-      </div>
-      </div>
-
     </div>
-
-
-
-
-
-    <footer class="footer">
-
-      <span>felicitas</span>
   </div>
-  <p>by Kasia & Helene, 2018</p>
-  </footer>
+
+</div>

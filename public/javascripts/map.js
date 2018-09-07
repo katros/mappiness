@@ -1,34 +1,34 @@
 $(document).ready(function() {
     start();
     let myIcon = L.icon({
-        iconUrl: '../stylesheets/marker-yellow.svg',
+        iconUrl: "../stylesheets/marker-yellow.svg",
         iconSize: [40, 47],
         iconAnchor: [20, 47],
         popupAnchor: [0, -45]
     });
 
     let othersIcon = L.icon({
-        iconUrl: '../stylesheets/marker-black.svg',
+        iconUrl: "../stylesheets/marker-black.svg",
         iconSize: [40, 47],
         iconAnchor: [20, 47],
         popupAnchor: [0, -45]
     });
 
     let followingIcon = L.icon({
-        iconUrl: '../stylesheets/marker-blue.svg',
+        iconUrl: "../stylesheets/marker-blue.svg",
         iconSize: [40, 47],
         iconAnchor: [20, 47],
         popupAnchor: [0, -45]
     });
 
     let poly;
-    let map = L.map('map').locate({ setView: true, maxZoom: 17 }),
+    let map = L.map("map").locate({ setView: true, maxZoom: 17 }),
         geocoder = L.Control.Geocoder.nominatim(),
         control = L.Control.geocoder({
             geocoder: geocoder,
             defaultMarkGeocode: false
         })
-            .on('markgeocode', function(e) {
+            .on("markgeocode", function(e) {
                 if (poly) {
                     poly.remove();
                 }
@@ -45,14 +45,13 @@ $(document).ready(function() {
         marker;
 
     L.tileLayer(
-        'https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0',
+        "https://maps.tilehosting.com/styles/positron/{z}/{x}/{y}.png?key=9rAT960ktqr7deCTc1f0",
         {
-            // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
             minZoom: 2
         }
     ).addTo(map);
 
-    map.on('click', function(e) {
+    map.on("click", function(e) {
         let lat = e.latlng.lat;
         let lng = e.latlng.lng;
 
@@ -95,14 +94,14 @@ $(document).ready(function() {
         let radius = e.accuracy / 2;
         L.circle(e.latlng, radius).addTo(map);
     }
-    map.on('locationfound', onLocationFound);
+    map.on("locationfound", onLocationFound);
 
     function start() {
-        axios.get('/protected/stories').then(result => {
+        axios.get("/protected/stories").then(result => {
             let user = result.data.user;
             let following = result.data.followingList;
             result.data.stories.forEach(story => {
-                let date = moment(story.created_at).format('lll');
+                let date = moment(story.created_at).format("lll");
                 let markerHtml = ` 
                 <a class="popup-username" href="/protected/user/${story.username}">
                 <p>${story.username}</p></a>
@@ -110,12 +109,12 @@ $(document).ready(function() {
                 <div class="display-story-container">
                 <div class="popup-story"><p>${story.story}</p></div>
                 <div class="popup-address">
-                <p>${story.address.street ? story.address.street : ''}</p>
-                <p>${story.address.city_district ? story.address.city_district : ''}</p>
-                <p>${story.address.town ? story.address.town : ''}</p>
-                <p>${story.address.city ? story.address.city : ''}</p>
-                <p>${story.address.county ? story.address.county : ''}</p>
-                <p>${story.address.country ? story.address.country : ''}</p
+                <p>${story.address.street ? story.address.street : ""}</p>
+                <p>${story.address.city_district ? story.address.city_district : ""}</p>
+                <p>${story.address.town ? story.address.town : ""}</p>
+                <p>${story.address.city ? story.address.city : ""}</p>
+                <p>${story.address.county ? story.address.county : ""}</p>
+                <p>${story.address.country ? story.address.country : ""}</p
                 <p>${date}</p>
                 <div>
                 </div>`;
