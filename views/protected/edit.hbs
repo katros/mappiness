@@ -1,10 +1,17 @@
-<div class="container">
-    <div class="card">
-        <h2>EDIT YOUR STORY</h2>
-        <form action="/protected/{{story._id}}" method='POST'>
-            <textarea type="text" id='story' name='story'>{{story.story}}</textarea>
-            <br>
-            <button type='submit'>UPDATE</button>
-        </form>
-    </div>
+<div class="top-bar">
+    <div class="btn-white-ghost btn-user"><a href="/protected/map">GO BACK TO MAP</a></div>
+    <a href="/protected/user-profile">
+        <svg class="profile-icons profile-icons__user"><use xlink:href="/images/sprite.svg#icon-user"></use></svg>
+    </a>
+    <a href="/auth/logout">
+        <svg class="profile-icons profile-icons__logout"><use xlink:href="/images/sprite.svg#icon-log-out"></use></svg>
+    </a>
+</div>
+
+<div class="story-edit-container">
+    <form action="/protected/{{story._id}}" method='POST'>
+        <textarea type="text" id='story' name='story'>{{story.story}}</textarea>
+        <br>
+        <button class="btn-blue-follow" type='submit'>UPDATE</button>
+    </form>
 </div>

@@ -9,44 +9,51 @@
 <br>
 <div class="profile">
 
-    <h1>{{customStories.user.username}}</h1>
+    <div class="side-panel">
+        <h1>{{customStories.user.username}}</h1>
+        <div class="btn-yellow-cta"><a href="/protected/map">ADD A NEW STORY</a></div>
+        <h4>YOU ARE FOLLOWING:</h4>
+        <ul>
+            {{#each customStories.user.following }}
+            <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>
 
-    <br> {{#each customStories.stories}}
-    <div class="user-story-container">
-        <p class="story-copy">{{this.story}}</p>
-        <div class="location">
-
-            {{#if this.address.street}}
-            <p>{{this.address.street}}</p>
-            {{/if}} {{#if this.address.city_district}}
-            <p>{{this.address.city_district}}</p>
-            {{/if}} {{#if this.address.town}}
-            <p>{{this.address.town}}</p>
-            {{/if}} {{#if this.address.city}}
-            <p>{{this.address.city}}</p>
-            {{/if}} {{#if this.address.county}}
-            <p>{{this.address.county}}</p>
-            {{/if}} {{#if this.address.country}}
-            <p>{{this.address.country}}</p>
-            {{/if}}
-            <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
-        </div>
-
-        <div class="story-btn-container">
-            <form action="/protected/{{this._id}}/delete" method='POST'>
-                <svg class="story-icon story-icon__delete"><use xlink:href="/images/sprite.svg#icon-trash-2"></use></svg>
-            </form>
-            <a href="/protected/{{this._id}}/edit"><svg class="story-icon story-icon__edit"><use xlink:href="/images/sprite.svg#icon-edit"></use></svg></a>
-        </div>
+            {{/each}}
+        </ul>
     </div>
-    <br> {{/each}}
-    <ul>
-        {{#each customStories.user.following }}
-        <a href="/protected/user/{{this.this}}"><li>{{this}}</li></a>
 
-        {{/each}}
-    </ul>
+    <div class="stories">
 
+        <br> {{#each customStories.stories}}
+        <div class="user-story-container">
+            <p class="story-copy">{{this.story}}</p>
+            <div class="location">
+
+                {{#if this.address.street}}
+                <p>{{this.address.street}}</p>
+                {{/if}} {{#if this.address.city_district}}
+                <p>{{this.address.city_district}}</p>
+                {{/if}} {{#if this.address.town}}
+                <p>{{this.address.town}}</p>
+                {{/if}} {{#if this.address.city}}
+                <p>{{this.address.city}}</p>
+                {{/if}} {{#if this.address.county}}
+                <p>{{this.address.county}}</p>
+                {{/if}} {{#if this.address.country}}
+                <p>{{this.address.country}}</p>
+                {{/if}}
+                <p>{{moment this.created_at format="DD.MM.YYYY, HH:mm"}}</p>
+            </div>
+
+            <div class="story-btn-container">
+                <form action="/protected/{{this._id}}/delete" method='POST'>
+                    <button class="btn-delete" type="submit"><svg class="story-icon story-icon__delete"><use xlink:href="/images/sprite.svg#icon-trash-2"></use></svg></button>
+                </form>
+
+                <a href="/protected/{{this._id}}/edit"><svg class="story-icon story-icon__edit"><use xlink:href="/images/sprite.svg#icon-edit"></use></svg></a>
+            </div>
+        </div>
+        <br> {{/each}}
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

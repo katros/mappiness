@@ -13,7 +13,7 @@ font-family: 'Abril Fatface', cursive;
 }
 
 body {
-    font: 16px "Assistant", sans-serif;
+    font: 16px 'Assistant', sans-serif;
     font-weight: 100;
     background-color: #fffefc;
     color: #33322f;
@@ -29,6 +29,10 @@ body {
     margin-top: 20px;
     margin-right: 130px;
     float: right;
+}
+
+.btn-user {
+    margin-right: 180px;
 }
 
 .btn-white-ghost a {
@@ -49,11 +53,11 @@ body {
 }
 
 .leaflet-container {
-    font: 100px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font: 100px/1.5 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .map-container #map {
-    height: 100vh;
+    height: 90vh;
     position: absolute;
     top: 60px;
     right: 0;
@@ -77,7 +81,7 @@ body {
     margin-top: 12px;
 
     & span {
-        font-family: "Abril Fatface", cursive;
+        font-family: 'Abril Fatface', cursive;
         margin-left: 15px;
         font-size: 30px;
         color: #fffefc;
@@ -171,14 +175,14 @@ body {
 .profile {
     padding-top: 70px;
     display: flex;
-    flex-wrap: wrap;
 }
+
 .user-story-container {
     background-color: #ffffff;
     border-radius: 10px;
     padding: 40px 60px;
     box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
-    width: 30%;
+    width: 40%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -192,6 +196,8 @@ body {
 
 .story-copy {
     word-wrap: break-word;
+    font-weight: 300;
+    padding-bottom: 10px;
 }
 
 .story-icon {
@@ -199,6 +205,12 @@ body {
     width: 20px;
     fill: #ffda75;
     margin-left: 10px;
+
+    transition: all 0.3s;
+}
+
+.story-icon:hover {
+    fill: #f8c948;
 }
 
 .location,
@@ -237,7 +249,108 @@ body {
     fill: #636363;
 }
 
-.leaflet-touch .leaflet-control-geocoder {
-    padding-top: 100px !important;
-    position: fixed !important;
+.btn-delete {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.story-edit-container {
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.story-edit-container textarea {
+    background-color: #ffffff;
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 40px 60px;
+    box-shadow: 0 3px 10px rgba(51, 50, 47, 0.5);
+    overflow: hidden;
+    margin-top: 70px;
+    border: none;
+    overflow: auto;
+    outline: none;
+    font-size: 13px;
+}
+
+.btn-blue-follow {
+    margin: 20px 0 40px;
+    font-size: 16px;
+    text-decoration: none;
+    border: 2px solid #66acc1;
+    color: #fffefc;
+    background-color: #66acc1;
+    padding: 8px 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    letter-spacing: 0.7px;
+
+    transition: all 0.4s;
+}
+
+.btn-blue-follow:hover {
+    background-color: #fffefc;
+    color: #66acc1;
+}
+
+.btn-yellow-cta {
+    margin: 20px 0 40px;
+}
+
+.btn-yellow-cta a {
+    text-decoration: none;
+    border: 2px solid #ffda75;
+    color: #fffefc;
+    background-color: #ffda75;
+    padding: 8px 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    letter-spacing: 0.7px;
+
+    transition: all 0.4s;
+}
+
+.btn-yellow-cta a:hover {
+    background-color: #fffefc;
+    color: #ffda75;
+}
+
+.profile .stories {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile .side-panel {
+    width: 15%;
+    margin: 50px 40px 50px 50px;
+    border-right: 1px solid #2f3133;
+}
+
+.side-panel ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-panel ul a {
+    list-style-type: none;
+    color: #66acc1;
+    text-decoration: none;
+    font-weight: 300;
+
+    transition: all 0.3s;
+}
+
+.side-panel h4 {
+    color: #66acc1;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.side-panel ul a:hover {
+    color: #128cb1;
 }
